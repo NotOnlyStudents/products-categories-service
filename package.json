@@ -52,12 +52,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/NotOnlyStudents/backend.git"
+    "url": "git+https://github.com/NotOnlyStudents/products-categories-service.git"
   },
   "author": "Not Only Students",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/NotOnlyStudents/backend/issues"
+    "url": "https://github.com/NotOnlyStudents/products-categories-service/issues"
   },
-  "homepage": "https://github.com/NotOnlyStudents/backend#readme"
+  "homepage": "https://github.com/NotOnlyStudents/products-categories-service#readme"
 }
