@@ -28,4 +28,8 @@ jobs:
           args: deploy --stage staging
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID_STAGING }}
+<<<<<<< HEAD
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY_STAGING }}
+=======
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY_STAGING }}
+>>>>>>> c8ded41e0292e0aa7193df3e3fbd3e1d7e6493d2
