@@ -1,4 +1,4 @@
-service: name
+service: products-categories-service
 
 frameworkVersion: "2"
 
@@ -23,8 +23,10 @@ provider:
             - dynamodb:DeleteItem
           Resource: '*'
   environment:
-    PRODUCTS_TABLE: products-table
-    CATEGORIES_TABLE: categories-table
+    PRODUCTS_TABLE: products-table-${self:provider.stage}
+    CATEGORIES_TABLE: categories-table-${self:provider.stage}
+    QUEUE_NAME: bought-product-queue-${self:provider.stage}
+    DEAD_QUEUE_NAME: dead-bought-product-queue-${self:provider.stage}
 
 package:
   individually: true
@@ -37,10 +39,52 @@ plugins:
 
 resources:
   Resources:
+    BoughtProductQueue:
+      Type: AWS::SQS::Queue
+      Properties:
+        QueueName: ${self:provider.environment.QUEUE_NAME}
+        DelaySeconds: 0
+        VisibilityTimeout: 30
+        RedrivePolicy:
+          deadLetterTargetArn:
+            !GetAtt 'DeadBoughtProduct.Arn'
+
+    DeadBoughtProduct:
+      Type: "AWS::SQS::Queue"
+      Properties:
+        QueueName: ${self:provider.environment.DEAD_QUEUE_NAME}
+        MessageRetentionPeriod: 604800 #7 days, should be enough time to fix an issue and retry the messages again in case of a critical issue
+
+    SqsBoughtProductPolicy:
+      Type: AWS::SQS::QueuePolicy
+      Properties:
+        Queues:
+          - Ref: BoughtProductQueue
+        PolicyDocument:
+          Version: "2021-04-19"
+          Statement:
+            - Effect: Allow
+              Principal: '*'
+              Action:
+                - sqs:SendMessage
+              Resource:
+                !GetAtt 'BoughtProductQueue.Arn'
+              Condition:
+                ArnEquals:
+                  'aws:SourceArn': arn:aws:sns:eu-west-1:501082649462:ProductBought.fifo
+
+    ProductBoughtTopicSubscription:
+      Type: AWS::SNS::Subscription
+      Properties:
+        Endpoint:
+          !GetAtt 'BoughtProductQueue.Arn'
+        Protocol: "sqs"
+        TopicArn: arn:aws:sns:eu-west-1:501082649462:ProductBought.fifo
+
     ProductsTable: 
       Type: AWS::DynamoDB::Table
       Properties:
-        TableName: ${self:environment.PRODUCTS_TABLE}
+        TableName: ${self:provider.environment.PRODUCTS_TABLE}
         AttributeDefinitions:
           - AttributeName: id
             AttributeType: S
@@ -54,7 +98,7 @@ resources:
     CategoriesTable: 
       Type: AWS::DynamoDB::Table
       Properties:
-        TableName: ${self:environment.CATEGORIES_TABLE}
+        TableName: ${self:provider.environment.CATEGORIES_TABLE}
         AttributeDefinitions:
           - AttributeName: name
             AttributeType: S
@@ -75,10 +119,12 @@ resources:
           Ref: ApiGatewayRestApi
         Type: COGNITO_USER_POOLS
         ProviderARNs:
-          -  !GetAtt 'CognitoUserPool.Arn'
+          - !GetAtt 'CognitoUserPool.Arn'
 
 custom:
-  productsTable:
+  webpack:
+    webpackConfig: ./webpack.config.js
+    includeModules: true
   dynamodb:
     stages:
       - dev
