@@ -1,0 +1,27 @@
+{
+  "Table": {
+    "TableName": "products-table-dev",
+    "KeySchema": [
+      {
+        "AttributeName": "ID",
+        "KeyType": "HASH"
+      }
+    ],
+    "AttributeDefinitions": [
+      {
+        "AttributeName": "ID",
+        "AttributeType": "S"
+      }
+    ],
+    "ProvisionedThroughput": {
+      "ReadCapacityUnits": 1,
+      "WriteCapacityUnits": 1
+    }
+  },
+  "Seed": [
+    {
+      "ID": "1",
+      "name": "Prodotto 1"
+    }
+  ]
+}

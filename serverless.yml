@@ -7,12 +7,32 @@ provider:
   runtime: nodejs12.x
   region: eu-west-1
   lambdaHashingVersion: 20201221
+  environment:
+    ADDRESS_TABLE_NAME: ${self:provider.stage}-addresses
+    DYNAMO_CONFIG: ${file(configs/${self:provider.stage}-dynamodb.yml)}
 
 plugins:
   - serverless-webpack
   - serverless-dynamodb-local
   - serverless-dynamodb-seed
   - serverless-offline
+
+functions:
+  getAllProducts:
+    handler: src/lambdas/getAllProducts.default
+    events:
+      - http:
+          path: products
+          method: GET
+          cors: true
+
+  createProduct:
+    handler: src/lambdas/createProduct.default
+    events:
+      - http:
+          path: products
+          method: POST
+          cors: true
 
 resources:
   Resources:

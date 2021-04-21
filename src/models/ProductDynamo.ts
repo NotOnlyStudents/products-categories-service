@@ -1,11 +1,13 @@
-import { attribute, hashKey, table } from '@aws/dynamodb-data-mapper-annotations';
+import {
+  attribute, hashKey, table,
+} from '@aws/dynamodb-data-mapper-annotations';
 import { Category } from './Category';
 import { Product } from './Product';
 
 @table('products')
 class ProductDynamo implements Product {
   @hashKey()
-  readonly id: string;
+  id?: string;
 
   @attribute()
   name?: string;
@@ -30,6 +32,19 @@ class ProductDynamo implements Product {
 
   @attribute()
   categories?: Category[];
+
+  constructor(product: string) {
+    const p = JSON.parse(product);
+
+    this.name = p.name;
+    this.description = p.description;
+    this.discount = p.discount;
+    this.evidence = p.evidence;
+    this.images = p.images;
+    this.price = p.price;
+    this.quantity = p.quantity;
+    this.categories = p.categories;
+  }
 }
 
 export default ProductDynamo;
