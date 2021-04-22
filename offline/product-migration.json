@@ -1,15 +1,15 @@
 {
   "Table": {
-    "TableName": "products-table-dev",
+    "TableName": "products-dev",
     "KeySchema": [
       {
-        "AttributeName": "ID",
+        "AttributeName": "id",
         "KeyType": "HASH"
       }
     ],
     "AttributeDefinitions": [
       {
-        "AttributeName": "ID",
+        "AttributeName": "id",
         "AttributeType": "S"
       }
     ],

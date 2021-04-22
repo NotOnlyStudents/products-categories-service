@@ -8,8 +8,10 @@ provider:
   region: eu-west-1
   lambdaHashingVersion: 20201221
   environment:
-    ADDRESS_TABLE_NAME: ${self:provider.stage}-addresses
-    DYNAMO_CONFIG: ${file(configs/${self:provider.stage}-dynamodb.yml)}
+    PRODUCTS_TABLE_NAME: products-${self:provider.stage}
+    ENDPOINT: "http://localhost:8000"
+    REGION: "localhost"
+    # DYNAMO_CONFIG: configs/${self:provider.stage}-dynamodb.yml
 
 plugins:
   - serverless-webpack
@@ -34,8 +36,44 @@ functions:
           method: POST
           cors: true
 
+  getProductById:
+    handler: src/lambdas/getProductById.default
+    events:
+      - http:
+          path: products/{id}
+          method: GET
+          cors: true
+
+  deleteProduct:
+    handler: src/lambdas/deleteProduct.default
+    events:
+      - http:
+          path: products/{id}
+          method: DELETE
+          cors: true
+
+  editProduct:
+    handler: src/lambdas/editProduct.default
+    events:
+      - http:
+          path: products/{id}
+          method: PATCH
+          cors: true
 resources:
   Resources:
+    ProductsTable:
+      Type: AWS::DynamoDB::Table
+      Properties:
+        TableName: products-${self:provider.stage}
+        AttributeDefinitions:
+          - AttributeName: id
+            AttributeType: S
+        KeySchema:
+          - AttributeName: id
+            KeyType: HASH
+        ProvisionedThroughput:
+          ReadCapacityUnits: 5
+          WriteCapacityUnits: 5
     ApiGatewayAuthorizer:
       Type: AWS::ApiGateway::Authorizer
       Properties:

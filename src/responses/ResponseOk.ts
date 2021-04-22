@@ -10,7 +10,7 @@ class ResponseOk implements Response {
 
   readonly body: string;
 
-  constructor(body: unknown) {
+  constructor(body: unknown = {}) {
     this.body = JSON.stringify(body);
   }
 

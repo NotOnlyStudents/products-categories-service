@@ -1,4 +1,4 @@
-import { validate } from 'src/endpoints/createProduct';
+import { validate } from 'src/validation/validate-product';
 
 describe('Validate product to create', () => {
   test('Valid product', () => {
