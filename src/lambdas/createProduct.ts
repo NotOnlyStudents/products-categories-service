@@ -24,9 +24,10 @@ const handler: Handler = async (
     const productToSave: ProductDynamo = new ProductDynamo(
       product.id,
       product.name,
+      product.name.toLowerCase(),
       product.description,
       product.discount,
-      (product.evidence as unknown as string) === 'true',
+      product.evidence,
       product.images,
       product.price,
       product.quantity,

@@ -1,13 +1,17 @@
-import { DataMapper, ScanOptions } from '@aws/dynamodb-data-mapper';
+import { DataMapper, QueryOptions, ScanOptions } from '@aws/dynamodb-data-mapper';
 import { DynamoDB } from 'aws-sdk';
 import {
   ConditionExpression,
+  ConditionExpressionPredicate,
   contains,
+  greaterThan,
+  equals,
   inList,
 } from '@aws/dynamodb-expressions';
-import { Product, ProductFilter } from 'src/models/Product';
+import { Product, ProductFilter, SortType } from 'src/models/Product';
 import ProductDynamo from 'src/models/ProductDynamo';
 import { v4 as uuidv4 } from 'uuid';
+import { equal } from 'node:assert';
 import ProductRepository from './ProductRepository';
 
 class DynamoProductRepository implements ProductRepository {
@@ -23,63 +27,76 @@ class DynamoProductRepository implements ProductRepository {
   }
 
   filter = async (filters: ProductFilter): Promise<Product[]> => {
-    const scanOptions: ScanOptions = {};
+    const scanOptions: QueryOptions = {};
 
-    if (filters.limit !== undefined) {
+    if (filters.limit) {
       scanOptions.limit = filters.limit;
     }
 
-    // if (filters) {
-    //   const conditions: ConditionExpression[] = [];
+    switch (filters.sort) {
+      case SortType.cheaper: {
+        break;
+      }
+      case SortType.expensive: {
+        break;
+      }
+      default: { // Alphabetical sort
+        // scanOptions.indexName = 'name';
+        // scanOptions.scanIndexForward = true;
+      }
+    }
 
-    //   if (filters.text) {
-    //     conditions.push({
-    //       ...contains(filters.text),
-    //       subject: 'name',
-    //     });
-    //   }
+    console.log(filters.priceMin, filters.priceMax);
 
-    //   if (filters.available) {
-    //     conditions.push({
-    //       type: 'GreaterThan',
-    //       subject: 'quantity',
-    //       object: 0,
-    //     });
-    //   }
+    if (filters) {
+      const conditions: ConditionExpression[] = [];
 
-    //   if (filters.evidence) {
-    //     conditions.push({
-    //       type: 'Equals',
-    //       subject: 'evidence',
-    //       object: filters.evidence,
-    //     });
-    //   }
+      if (filters.text) {
+        conditions.push({
+          ...contains(filters.text.toLowerCase()),
+          subject: 'searchName',
+        });
+      }
 
-    //   if (filters.priceMax !== undefined && filters.priceMin !== undefined) {
-    //     conditions.push({
-    //       type: 'Between',
-    //       subject: 'price',
-    //       lowerBound: filters.priceMin,
-    //       upperBound: filters.priceMax,
-    //     });
-    //   }
+      if (filters.available) {
+        conditions.push({
+          ...greaterThan(0),
+          subject: 'quantity',
+        });
+      }
 
-    //   if (filters.categories) {
-    //     conditions.push({
-    //       ...inList(filters.categories),
-    //       subject: 'categories',
-    //     });
-    //   }
+      if (filters.evidence) {
+        conditions.push({
+          ...equals(filters.evidence),
+          subject: 'evidence',
+        });
+      }
 
-    //   scanOptions.filter = {
-    //     type: 'And',
-    //     conditions,
-    //   };
-    // }
+      if (filters.priceMax !== undefined && filters.priceMin !== undefined) {
+        conditions.push({
+          type: 'Between',
+          subject: 'price',
+          lowerBound: filters.priceMin,
+          upperBound: filters.priceMax,
+        });
+      }
+
+      if (filters.categories) {
+        conditions.push({
+          ...inList(filters.categories),
+          subject: 'categories',
+        });
+      }
+
+      if (conditions.length) {
+        scanOptions.filter = {
+          type: 'And',
+          conditions,
+        };
+      }
+    }
 
     const results = this.mapper.scan(ProductDynamo, scanOptions);
-
-    console.log(results.pages());
 
     const products: Product[] = [];
 
