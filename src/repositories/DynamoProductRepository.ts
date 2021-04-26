@@ -1,4 +1,4 @@
-import { DataMapper, QueryOptions, ScanOptions } from '@aws/dynamodb-data-mapper';
+import { DataMapper, QueryOptions } from '@aws/dynamodb-data-mapper';
 import { DynamoDB } from 'aws-sdk';
 import {
   ConditionExpression,
@@ -7,12 +7,12 @@ import {
   greaterThan,
   equals,
   inList,
-  beginsWith,
 } from '@aws/dynamodb-expressions';
-import { Product, ProductFilter, SortType } from 'src/models/Product';
+import {
+  Product, ProductFilter, ProductPaginator, SortType,
+} from 'src/models/Product';
 import ProductDynamo from 'src/models/ProductDynamo';
 import { v4 as uuidv4 } from 'uuid';
-import { profile } from 'node:console';
 import ProductRepository from './ProductRepository';
 
 class DynamoProductRepository implements ProductRepository {
@@ -27,25 +27,23 @@ class DynamoProductRepository implements ProductRepository {
     this.mapper = new DataMapper({ client: dynamodb });
   }
 
-  filter = async (filters: ProductFilter): Promise<Product[]> => {
-    const scanOptions: QueryOptions = {
-
-    };
+  filter = async (filters: ProductFilter): Promise<ProductPaginator> => {
+    const queryOptions: QueryOptions = {};
 
     switch (filters.sort) {
       case SortType.cheaper: {
-        scanOptions.indexName = 'PriceIndex';
-        scanOptions.scanIndexForward = true;
+        queryOptions.indexName = 'PriceIndex';
+        queryOptions.scanIndexForward = true;
         break;
       }
       case SortType.expensive: {
-        scanOptions.indexName = 'PriceIndex';
-        scanOptions.scanIndexForward = false;
+        queryOptions.indexName = 'PriceIndex';
+        queryOptions.scanIndexForward = false;
         break;
       }
       default: { // Alphabetical sort
-        scanOptions.indexName = 'NameIndex';
-        scanOptions.scanIndexForward = true;
+        queryOptions.indexName = 'NameIndex';
+        queryOptions.scanIndexForward = true;
       }
     }
 
@@ -88,7 +86,7 @@ class DynamoProductRepository implements ProductRepository {
       }
 
       if (conditions.length) {
-        scanOptions.filter = {
+        queryOptions.filter = {
           type: 'And',
           conditions,
         };
@@ -98,21 +96,24 @@ class DynamoProductRepository implements ProductRepository {
     const results = this.mapper.query(ProductDynamo, {
       subject: '_id',
       ...equals('product'),
-    }, scanOptions);
+    }, queryOptions);
 
     const products: Product[] = [];
-    let index = 0;
+    let total = 0;
 
     for await (const result of results) {
       if ((products.length < filters.limit)
-        && index > (filters.limit * filters.offset)) {
+        && total > (filters.limit * filters.offset)) {
         products.push(result);
       }
 
-      ++index;
+      ++total;
     }
 
-    return products;
+    return {
+      products,
+      total,
+    };
   };
 
   getOne = async (id: string): Promise<Product> => {

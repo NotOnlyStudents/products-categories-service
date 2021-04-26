@@ -1,7 +1,7 @@
 import { HttpHeaders } from 'aws-sdk/clients/iot';
 import Response from './Response';
 
-class ResponseOk implements Response {
+class ResponseOk<T> implements Response {
   readonly statusCode: number = 200;
 
   readonly headers: HttpHeaders = {
@@ -10,8 +10,8 @@ class ResponseOk implements Response {
 
   readonly body: string;
 
-  constructor(body: unknown = {}) {
-    this.body = JSON.stringify(body);
+  constructor(body?: T) {
+    this.body = JSON.stringify(body || {});
   }
 
   toString(): string {

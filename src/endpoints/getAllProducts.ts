@@ -1,11 +1,19 @@
-import { Product, ProductFilter } from 'src/models/Product';
+import { APIGatewayProxyEvent } from 'aws-lambda';
+import { Product, ProductFilter, ProductPaginator } from 'src/models/Product';
+import { GetAllProductsResponse } from 'src/models/product-responses';
 import ProductRepository from 'src/repositories/ProductRepository';
+import Response from 'src/responses/Response';
+import ResponseOk from 'src/responses/ResponseOk';
 
 async function getAllProducts(
-  repository: ProductRepository, filter: ProductFilter,
-): Promise<Product[]> {
-  const products: Product[] = await repository.filter(filter);
-  return products;
+  repository: ProductRepository, event: APIGatewayProxyEvent,
+): Promise<Response> {
+  const filter: ProductFilter = createFilter(event.multiValueQueryStringParameters);
+  const response: ResponseOk<GetAllProductsResponse> = new ResponseOk(
+    await repository.filter(filter),
+  );
+
+  return response;
 }
 
 export function createFilter(query): ProductFilter {

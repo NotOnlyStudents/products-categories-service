@@ -1,12 +1,10 @@
 import {
   Handler, APIGatewayProxyEvent, Callback, Context,
 } from 'aws-lambda';
-import getAllProducts, { createFilter } from 'src/endpoints/getAllProducts';
+import getAllProducts from 'src/endpoints/getAllProducts';
 
-import { Product } from 'src/models/Product';
 import DynamoProductRepository from 'src/repositories/DynamoProductRepository';
 import Response from 'src/responses/Response';
-import ResponseOk from 'src/responses/ResponseOk';
 
 const handler: Handler = async (
   event: APIGatewayProxyEvent,
@@ -14,14 +12,10 @@ const handler: Handler = async (
   callback: Callback<Response>,
 ) => {
   try {
-    const products: Product[] = await getAllProducts(
+    const response: Response = await getAllProducts(
       new DynamoProductRepository(),
-      createFilter(event.multiValueQueryStringParameters),
+      event,
     );
-
-    const response: Response = new ResponseOk({
-      data: products,
-    });
 
     callback(null, response);
   } catch (error) {
