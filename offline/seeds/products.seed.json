@@ -1,0 +1,39 @@
+[
+  {
+    "_id": "product",
+    "id": "00000",
+    "name": "Scarpe Nike",
+    "searchName": "scarpe nike",
+    "description": "Scarpe da basket",
+    "price": 12090,
+    "quantity": -1,
+    "evidence": true,
+    "discount": 20,
+    "images": [
+      "A",
+      "B"
+    ],
+    "categories": [
+      "scarpe"
+    ]
+  },
+  {
+    "_id": "product",
+    "id": "00001",
+    "name": "Scarpe Under Armour",
+    "searchName": "scarpe under armour",
+    "description": "Scarpe da basket",
+    "price": 16090,
+    "quantity": 1,
+    "evidence": false,
+    "discount": 20,
+    "images": [
+      "A",
+      "B"
+    ],
+    "categories": [
+      "scarpe",
+      "basket"
+    ]
+  }
+]

@@ -64,13 +64,42 @@ resources:
     ProductsTable:
       Type: AWS::DynamoDB::Table
       Properties:
-        TableName: products-${self:provider.stage}
+        TableName: ${self:provider.environment.PRODUCTS_TABLE_NAME}
         AttributeDefinitions:
           - AttributeName: id
             AttributeType: S
+          - AttributeName: _id
+            AttributeType: S
+          - AttributeName: name
+            AttributeType: S
+          - AttributeName: price
+            AttributeType: N
         KeySchema:
           - AttributeName: id
             KeyType: HASH
+        GlobalSecondaryIndexes:
+          - IndexName: NameIndex
+            KeySchema:
+              - AttributeName: _id
+                KeyType: HASH
+              - AttributeName: name
+                KeyType: RANGE
+            Projection:
+              ProjectionType: "ALL"
+            ProvisionedThroughput:
+              ReadCapacityUnits: 5
+              WriteCapacityUnits: 5
+          - IndexName: PriceIndex
+            KeySchema:
+              - AttributeName: _id
+                KeyType: HASH
+              - AttributeName: price
+                KeyType: RANGE
+            Projection:
+              ProjectionType: "ALL"
+            ProvisionedThroughput:
+              ReadCapacityUnits: 5
+              WriteCapacityUnits: 5
         ProvisionedThroughput:
           ReadCapacityUnits: 5
           WriteCapacityUnits: 5
@@ -97,3 +126,8 @@ custom:
       convertEmptyValues: true
     migration:
       dir: ./offline
+    seed:
+      products:
+        sources:
+          - table: ${self:provider.environment.PRODUCTS_TABLE_NAME}
+            sources: [./offline/seeds/products.seed.json]

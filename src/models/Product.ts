@@ -1,8 +1,9 @@
 import { Category } from './Category';
 
 export interface Product {
+  _id: string;
   id: string;
-  name?: string;
+  name: string;
   description?: string;
   images?: string[];
   quantity?: number;
@@ -28,4 +29,9 @@ export enum SortType {
   alphabetical = 'alphabetical',
   cheaper = 'cheaper',
   expensive = 'expensive',
+}
+
+export interface ProductPaginator {
+  total: number,
+  products: Product[]
 }

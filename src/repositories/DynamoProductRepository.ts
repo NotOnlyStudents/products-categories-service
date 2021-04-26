@@ -2,16 +2,17 @@ import { DataMapper, QueryOptions, ScanOptions } from '@aws/dynamodb-data-mapper
 import { DynamoDB } from 'aws-sdk';
 import {
   ConditionExpression,
-  ConditionExpressionPredicate,
+  between,
   contains,
   greaterThan,
   equals,
   inList,
+  beginsWith,
 } from '@aws/dynamodb-expressions';
 import { Product, ProductFilter, SortType } from 'src/models/Product';
 import ProductDynamo from 'src/models/ProductDynamo';
 import { v4 as uuidv4 } from 'uuid';
-import { equal } from 'node:assert';
+import { profile } from 'node:console';
 import ProductRepository from './ProductRepository';
 
 class DynamoProductRepository implements ProductRepository {
@@ -27,26 +28,26 @@ class DynamoProductRepository implements ProductRepository {
   }
 
   filter = async (filters: ProductFilter): Promise<Product[]> => {
-    const scanOptions: QueryOptions = {};
+    const scanOptions: QueryOptions = {
 
-    if (filters.limit) {
-      scanOptions.limit = filters.limit;
-    }
+    };
 
     switch (filters.sort) {
       case SortType.cheaper: {
+        scanOptions.indexName = 'PriceIndex';
+        scanOptions.scanIndexForward = true;
         break;
       }
       case SortType.expensive: {
+        scanOptions.indexName = 'PriceIndex';
+        scanOptions.scanIndexForward = false;
         break;
       }
       default: { // Alphabetical sort
-        // scanOptions.indexName = 'name';
-        // scanOptions.scanIndexForward = true;
+        scanOptions.indexName = 'NameIndex';
+        scanOptions.scanIndexForward = true;
       }
     }
-
-    console.log(filters.priceMin, filters.priceMax);
 
     if (filters) {
       const conditions: ConditionExpression[] = [];
@@ -74,16 +75,14 @@ class DynamoProductRepository implements ProductRepository {
 
       if (filters.priceMax !== undefined && filters.priceMin !== undefined) {
         conditions.push({
-          type: 'Between',
+          ...between(filters.priceMin, filters.priceMax),
           subject: 'price',
-          lowerBound: filters.priceMin,
-          upperBound: filters.priceMax,
         });
       }
 
       if (filters.categories) {
         conditions.push({
-          ...inList(filters.categories),
+          ...inList(...filters.categories),
           subject: 'categories',
         });
       }
@@ -96,12 +95,21 @@ class DynamoProductRepository implements ProductRepository {
       }
     }
 
-    const results = this.mapper.scan(ProductDynamo, scanOptions);
+    const results = this.mapper.query(ProductDynamo, {
+      subject: '_id',
+      ...equals('product'),
+    }, scanOptions);
 
     const products: Product[] = [];
+    let index = 0;
 
     for await (const result of results) {
-      products.push(result);
+      if ((products.length < filters.limit)
+        && index > (filters.limit * filters.offset)) {
+        products.push(result);
+      }
+
+      ++index;
     }
 
     return products;

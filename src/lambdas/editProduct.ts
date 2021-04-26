@@ -24,7 +24,6 @@ const handler: Handler = async (
     const productToEdit: ProductDynamo = new ProductDynamo(
       event.pathParameters.id,
       product.name,
-      product.name.toLowerCase(),
       product.description,
       product.discount,
       product.evidence,

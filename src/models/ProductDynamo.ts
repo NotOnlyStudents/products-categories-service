@@ -6,14 +6,25 @@ import { Product } from './Product';
 
 @table(process.env.PRODUCTS_TABLE_NAME)
 class ProductDynamo implements Product {
+  @rangeKey({
+    indexKeyConfigurations: {
+      ItemIdIndex: 'HASH',
+    },
+  })
+  _id: string;
+
   @hashKey()
   id: string;
 
-  @rangeKey()
+  @rangeKey({
+    indexKeyConfigurations: {
+      ItemIdIndex: 'RANGE',
+    },
+  })
   name: string;
 
   @attribute()
-  searchName: string;
+  searchName?: string;
 
   @attribute()
   description?: string;
@@ -24,7 +35,11 @@ class ProductDynamo implements Product {
   @attribute()
   quantity?: number;
 
-  @attribute()
+  @attribute({
+    indexKeyConfigurations: {
+      ItemIdIndex: 'RANGE',
+    },
+  })
   price?: number;
 
   @attribute()
@@ -39,7 +54,6 @@ class ProductDynamo implements Product {
   constructor(
     id: string = '',
     name: string = '',
-    searchName: string = '',
     description: string = '',
     discount: number = 0,
     evidence: boolean = false,
@@ -48,9 +62,10 @@ class ProductDynamo implements Product {
     quantity: number = 0,
     categories: Category[] = [],
   ) {
+    this._id = 'product';
     this.id = id;
     this.name = name;
-    this.searchName = searchName;
+    this.searchName = this.name.toLowerCase();
     this.description = description;
     this.discount = discount;
     this.evidence = evidence;
