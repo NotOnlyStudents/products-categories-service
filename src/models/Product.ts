@@ -3,7 +3,7 @@ import { Category } from './Category';
 export interface Product {
   _id: string;
   id: string;
-  name: string;
+  name?: string;
   description?: string;
   images?: string[];
   quantity?: number;

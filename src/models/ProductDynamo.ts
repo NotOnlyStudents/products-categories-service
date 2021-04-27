@@ -6,7 +6,7 @@ import { Product } from './Product';
 
 @table(process.env.PRODUCTS_TABLE_NAME)
 class ProductDynamo implements Product {
-  @rangeKey({
+  @attribute({
     indexKeyConfigurations: {
       ItemIdIndex: 'HASH',
     },
@@ -16,12 +16,12 @@ class ProductDynamo implements Product {
   @hashKey()
   id: string;
 
-  @rangeKey({
+  @attribute({
     indexKeyConfigurations: {
       ItemIdIndex: 'RANGE',
     },
   })
-  name: string;
+  name?: string;
 
   @attribute()
   searchName?: string;

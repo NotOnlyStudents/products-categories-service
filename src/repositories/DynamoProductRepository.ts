@@ -102,12 +102,12 @@ class DynamoProductRepository implements ProductRepository {
     let total = 0;
 
     for await (const result of results) {
+      ++total;
+
       if ((products.length < filters.limit)
         && total > (filters.limit * filters.offset)) {
         products.push(result);
       }
-
-      ++total;
     }
 
     return {
@@ -117,7 +117,7 @@ class DynamoProductRepository implements ProductRepository {
   };
 
   getOne = async (id: string): Promise<Product> => {
-    const productToSearch = new ProductDynamo(id);
+    const productToSearch: Product = new ProductDynamo(id);
 
     return this.mapper.get(productToSearch);
   };

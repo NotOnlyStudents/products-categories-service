@@ -9,13 +9,15 @@ export interface CreateProductResponse {
 }
 
 export interface GetOneProductResponse {
-  data: {
-    token: {
-      data: Product
-    },
-    timeout: string
-  },
+  data: GetOneProductTokenType,
   hmac: string
+}
+
+export interface GetOneProductTokenType {
+  token: {
+    data: Product
+  },
+  timeout: string
 }
 
 export interface EditProductResponse {
