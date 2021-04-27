@@ -104,8 +104,12 @@ class DynamoProductRepository implements ProductRepository {
     for await (const result of results) {
       ++total;
 
-      if ((products.length < filters.limit)
-        && total > (filters.limit * filters.offset)) {
+      if (filters.limit !== undefined) {
+        if ((products.length < filters.limit)
+          && total > (filters.limit * filters.offset)) {
+          products.push(result);
+        }
+      } else {
         products.push(result);
       }
     }

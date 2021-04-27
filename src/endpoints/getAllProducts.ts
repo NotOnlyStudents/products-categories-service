@@ -9,9 +9,9 @@ async function getAllProducts(
   repository: ProductRepository, event: APIGatewayProxyEvent,
 ): Promise<Response> {
   const filter: ProductFilter = createFilter(event.multiValueQueryStringParameters);
-  const response: ResponseOk<GetAllProductsResponse> = new ResponseOk(
-    await repository.filter(filter),
-  );
+  const response = new ResponseOk<GetAllProductsResponse>({
+    data: await repository.filter(filter),
+  });
 
   return response;
 }
@@ -46,6 +46,8 @@ export function createFilter(query): ProductFilter {
 
     if (query.offset) {
       filters.offset = parseInt(query.offset[0]);
+    } else {
+      filters.offset = 0;
     }
 
     if (query.limit) {
