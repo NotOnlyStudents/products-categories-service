@@ -36,7 +36,7 @@
             "KeyType": "HASH"
           },
           {
-            "AttributeName": "price",
+            "AttributeName": "discountedPrice",
             "KeyType": "RANGE"
           }
         ],
@@ -63,7 +63,7 @@
         "AttributeType": "S"
       },
       {
-        "AttributeName": "price",
+        "AttributeName": "discountedPrice",
         "AttributeType": "N"
       }
     ],

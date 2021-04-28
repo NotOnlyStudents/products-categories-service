@@ -72,7 +72,7 @@ resources:
             AttributeType: S
           - AttributeName: name
             AttributeType: S
-          - AttributeName: price
+          - AttributeName: discountedPrice
             AttributeType: N
         KeySchema:
           - AttributeName: id
@@ -93,7 +93,7 @@ resources:
             KeySchema:
               - AttributeName: _id
                 KeyType: HASH
-              - AttributeName: price
+              - AttributeName: discountedPrice
                 KeyType: RANGE
             Projection:
               ProjectionType: "ALL"

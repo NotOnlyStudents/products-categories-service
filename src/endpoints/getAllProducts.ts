@@ -25,11 +25,13 @@ export function createFilter(query): ProductFilter {
     }
 
     if (query.priceMax) {
-      filters.priceMax = parseInt(query.priceMax[0]);
+      filters.priceMax = parseFloat(query.priceMax[0]);
     }
 
     if (query.priceMin) {
-      filters.priceMin = parseInt(query.priceMin[0]);
+      filters.priceMin = parseFloat(query.priceMin[0]);
+    } else {
+      filters.priceMin = 0;
     }
 
     if (query.categories) {

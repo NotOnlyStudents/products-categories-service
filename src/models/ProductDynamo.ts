@@ -35,12 +35,15 @@ class ProductDynamo implements Product {
   @attribute()
   quantity?: number;
 
+  @attribute()
+  price?: number;
+
   @attribute({
     indexKeyConfigurations: {
       ItemIdIndex: 'RANGE',
     },
-  })
-  price?: number;
+  })  
+  discountedPrice?: number;
 
   @attribute()
   evidence?: boolean;
@@ -68,6 +71,7 @@ class ProductDynamo implements Product {
     this.searchName = this.name.toLowerCase();
     this.description = description;
     this.discount = discount;
+    this.discountedPrice = Math.round((price - (price * discount) / (100)) * 100) / 100;
     this.evidence = evidence;
     this.images = images;
     this.price = price;

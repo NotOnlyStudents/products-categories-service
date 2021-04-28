@@ -28,22 +28,59 @@ class DynamoProductRepository implements ProductRepository {
   }
 
   filter = async (filters: ProductFilter): Promise<ProductPaginator> => {
+    let sortByPrice = false; 
+    let keyCondition: ConditionExpression;
     const queryOptions: QueryOptions = {};
 
     switch (filters.sort) {
       case SortType.cheaper: {
         queryOptions.indexName = 'PriceIndex';
         queryOptions.scanIndexForward = true;
+        sortByPrice = true; 
+
+        keyCondition = {
+          type: 'And',
+          conditions: [
+            {
+              subject: '_id',
+              ...equals('product'),
+            },
+            {
+              subject: 'discountedPrice',
+              ...between(filters.priceMin, filters.priceMax),
+            }
+          ]
+        };
         break;
       }
       case SortType.expensive: {
         queryOptions.indexName = 'PriceIndex';
         queryOptions.scanIndexForward = false;
+        sortByPrice = true; 
+
+        keyCondition = {
+          type: 'And',
+          conditions: [
+            {
+              subject: '_id',
+              ...equals('product'),
+            },
+            {
+              subject: 'discountedPrice',
+              ...between(filters.priceMin, filters.priceMax),
+            }
+          ]
+        };
         break;
       }
       default: { // Alphabetical sort
         queryOptions.indexName = 'NameIndex';
         queryOptions.scanIndexForward = true;
+
+        keyCondition = {
+          subject: '_id',
+          ...equals('product'),
+        };
       }
     }
 
@@ -71,10 +108,10 @@ class DynamoProductRepository implements ProductRepository {
         });
       }
 
-      if (filters.priceMax !== undefined && filters.priceMin !== undefined) {
+      if (!sortByPrice && filters.priceMax !== undefined) {
         conditions.push({
           ...between(filters.priceMin, filters.priceMax),
-          subject: 'price',
+          subject: 'discountedPrice',
         });
       }
 
@@ -93,10 +130,7 @@ class DynamoProductRepository implements ProductRepository {
       }
     }
 
-    const results = this.mapper.query(ProductDynamo, {
-      subject: '_id',
-      ...equals('product'),
-    }, queryOptions);
+    const results = this.mapper.query(ProductDynamo, keyCondition, queryOptions);
 
     const products: Product[] = [];
     let total = 0;
