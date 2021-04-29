@@ -26,7 +26,11 @@ class DynamoCategoryRepository implements CategoryRepository {
 
     for await (const result of results) {
       for (const category of result.categories) {
-        if (category.includes(text)) {
+        if (text) {
+          if (category.includes(text)) {
+            categories.add(category);
+          }
+        } else {
           categories.add(category);
         }
       }

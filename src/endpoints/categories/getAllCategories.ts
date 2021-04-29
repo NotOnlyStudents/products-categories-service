@@ -9,7 +9,7 @@ async function getAllCategories(
 ): Promise<Response> {
   let response;
 
-  const { text } = event.queryStringParameters;
+  const { text } = event.queryStringParameters || { };
   const categories = await repository.getAllCategories(text);
 
   response = new ResponseOk<GetAllCategoriesResponse>({
