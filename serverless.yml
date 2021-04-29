@@ -21,7 +21,7 @@ plugins:
 
 functions:
   getAllProducts:
-    handler: src/lambdas/getAllProducts.default
+    handler: src/lambdas/products/getAllProducts.default
     events:
       - http:
           path: products
@@ -29,7 +29,7 @@ functions:
           cors: true
 
   createProduct:
-    handler: src/lambdas/createProduct.default
+    handler: src/lambdas/products/createProduct.default
     events:
       - http:
           path: products
@@ -37,7 +37,7 @@ functions:
           cors: true
 
   getProductById:
-    handler: src/lambdas/getProductById.default
+    handler: src/lambdas/products/getProductById.default
     events:
       - http:
           path: products/{id}
@@ -45,7 +45,7 @@ functions:
           cors: true
 
   deleteProduct:
-    handler: src/lambdas/deleteProduct.default
+    handler: src/lambdas/products/deleteProduct.default
     events:
       - http:
           path: products/{id}
@@ -53,12 +53,21 @@ functions:
           cors: true
 
   editProduct:
-    handler: src/lambdas/editProduct.default
+    handler: src/lambdas/products/editProduct.default
     events:
       - http:
           path: products/{id}
           method: PATCH
           cors: true
+
+  getAllCategories:
+    handler: src/lambdas/categories/getAllCategories.default
+    events:
+      - http:
+          path: categories
+          method: GET
+          cors: true
+
 resources:
   Resources:
     ProductsTable:

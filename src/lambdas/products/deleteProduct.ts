@@ -1,8 +1,8 @@
 import {
   Handler, APIGatewayProxyEvent, Callback, Context,
 } from 'aws-lambda';
+import deleteProduct from 'src/endpoints/products/deleteProduct';
 
-import editProduct from 'src/endpoints/editProduct';
 import DynamoProductRepository from 'src/repositories/DynamoProductRepository';
 import Response from 'src/responses/Response';
 
@@ -12,7 +12,7 @@ const handler: Handler = async (
   callback: Callback<Response>,
 ) => {
   try {
-    const response: Response = await editProduct(
+    const response: Response = await deleteProduct(
       new DynamoProductRepository(),
       event,
     );

@@ -42,7 +42,7 @@ class ProductDynamo implements Product {
     indexKeyConfigurations: {
       ItemIdIndex: 'RANGE',
     },
-  })  
+  })
   discountedPrice?: number;
 
   @attribute()

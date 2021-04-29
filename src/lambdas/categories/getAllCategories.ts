@@ -1,8 +1,9 @@
 import {
   Handler, APIGatewayProxyEvent, Callback, Context,
 } from 'aws-lambda';
+import getAllCategories from 'src/endpoints/categories/getAllCategories';
+import DynamoCategoryRepository from 'src/repositories/DynamoCategoryRepository';
 
-import getProductById from 'src/endpoints/getProductById';
 import DynamoProductRepository from 'src/repositories/DynamoProductRepository';
 import Response from 'src/responses/Response';
 
@@ -12,8 +13,8 @@ const handler: Handler = async (
   callback: Callback<Response>,
 ) => {
   try {
-    const response: Response = await getProductById(
-      new DynamoProductRepository(),
+    const response: Response = await getAllCategories(
+      new DynamoCategoryRepository(),
       event,
     );
 

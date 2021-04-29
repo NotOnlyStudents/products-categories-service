@@ -1,7 +1,7 @@
 import {
   Handler, APIGatewayProxyEvent, Callback, Context,
 } from 'aws-lambda';
-import getAllProducts from 'src/endpoints/getAllProducts';
+import getAllProducts from 'src/endpoints/products/getAllProducts';
 
 import DynamoProductRepository from 'src/repositories/DynamoProductRepository';
 import Response from 'src/responses/Response';

@@ -28,7 +28,7 @@ class DynamoProductRepository implements ProductRepository {
   }
 
   filter = async (filters: ProductFilter): Promise<ProductPaginator> => {
-    let sortByPrice = false; 
+    let sortByPrice = false;
     let keyCondition: ConditionExpression;
     const queryOptions: QueryOptions = {};
 
@@ -36,41 +36,13 @@ class DynamoProductRepository implements ProductRepository {
       case SortType.cheaper: {
         queryOptions.indexName = 'PriceIndex';
         queryOptions.scanIndexForward = true;
-        sortByPrice = true; 
-
-        keyCondition = {
-          type: 'And',
-          conditions: [
-            {
-              subject: '_id',
-              ...equals('product'),
-            },
-            {
-              subject: 'discountedPrice',
-              ...between(filters.priceMin, filters.priceMax),
-            }
-          ]
-        };
+        sortByPrice = true;
         break;
       }
       case SortType.expensive: {
         queryOptions.indexName = 'PriceIndex';
         queryOptions.scanIndexForward = false;
-        sortByPrice = true; 
-
-        keyCondition = {
-          type: 'And',
-          conditions: [
-            {
-              subject: '_id',
-              ...equals('product'),
-            },
-            {
-              subject: 'discountedPrice',
-              ...between(filters.priceMin, filters.priceMax),
-            }
-          ]
-        };
+        sortByPrice = true;
         break;
       }
       default: { // Alphabetical sort
@@ -81,6 +53,25 @@ class DynamoProductRepository implements ProductRepository {
           subject: '_id',
           ...equals('product'),
         };
+      }
+    }
+
+    if (sortByPrice) {
+      keyCondition = {
+        type: 'And',
+        conditions: [
+          {
+            subject: '_id',
+            ...equals('product'),
+          },
+        ],
+      };
+
+      if (filters.priceMax !== undefined) {
+        keyCondition.conditions.push({
+          subject: 'discountedPrice',
+          ...between(filters.priceMin, filters.priceMax),
+        });
       }
     }
 
@@ -116,9 +107,14 @@ class DynamoProductRepository implements ProductRepository {
       }
 
       if (filters.categories) {
-        conditions.push({
-          ...inList(...filters.categories),
+        const categoryCondition = (category) => ({
+          ...contains(category),
           subject: 'categories',
+        });
+
+        conditions.push({
+          type: 'And',
+          conditions: filters.categories.map(categoryCondition),
         });
       }
 
