@@ -1,7 +1,7 @@
 import { Category } from 'src/models/Category';
 
 interface CategoryRepository {
-  getAllCategories(): Promise<Category[]>;
+  getAllCategories(text: string): Promise<Category[]>;
 }
 
 export default CategoryRepository;
