@@ -1,4 +1,4 @@
-service: name
+service: products-categories-service
 
 frameworkVersion: "2"
 
@@ -7,12 +7,32 @@ provider:
   runtime: nodejs12.x
   region: eu-west-1
   lambdaHashingVersion: 20201221
+  apiGateway:
+    shouldStartNameWithService: true
+  iam:
+    role:
+      statements:
+        - Effect: Allow
+          Action:
+            - dynamodb:Query
+            - dynamodb:Scan
+            - dynamodb:GetItem
+            - dynamodb:PutItem
+            - dynamodb:UpdateItem
+            - dynamodb:DeleteItem
+          Resource: '*'
   environment:
     PRODUCTS_TABLE_NAME: products-${self:provider.stage}
+    CATEGORIES_TABLE: categories-table-${self:provider.stage}
+    QUEUE_NAME: bought-product-queue-${self:provider.stage}
+    DEAD_QUEUE_NAME: dead-bought-product-queue-${self:provider.stage}
     ENDPOINT: "http://localhost:8000"
     REGION: "localhost"
     # DYNAMO_CONFIG: configs/${self:provider.stage}-dynamodb.yml
 
+package:
+  individually: true
+    
 plugins:
   - serverless-webpack
   - serverless-dynamodb-local
@@ -70,6 +90,48 @@ functions:
 
 resources:
   Resources:
+    BoughtProductQueue:
+      Type: AWS::SQS::Queue
+      Properties:
+        QueueName: ${self:provider.environment.QUEUE_NAME}
+        DelaySeconds: 0
+        VisibilityTimeout: 30
+        RedrivePolicy:
+          deadLetterTargetArn:
+            !GetAtt 'DeadBoughtProduct.Arn'
+
+    DeadBoughtProduct:
+      Type: "AWS::SQS::Queue"
+      Properties:
+        QueueName: ${self:provider.environment.DEAD_QUEUE_NAME}
+        MessageRetentionPeriod: 604800 #7 days, should be enough time to fix an issue and retry the messages again in case of a critical issue
+
+    SqsBoughtProductPolicy:
+      Type: AWS::SQS::QueuePolicy
+      Properties:
+        Queues:
+          - Ref: BoughtProductQueue
+        PolicyDocument:
+          Version: "2021-04-19"
+          Statement:
+            - Effect: Allow
+              Principal: '*'
+              Action:
+                - sqs:SendMessage
+              Resource:
+                !GetAtt 'BoughtProductQueue.Arn'
+              Condition:
+                ArnEquals:
+                  'aws:SourceArn': arn:aws:sns:eu-west-1:501082649462:ProductBought.fifo
+
+    ProductBoughtTopicSubscription:
+      Type: AWS::SNS::Subscription
+      Properties:
+        Endpoint:
+          !GetAtt 'BoughtProductQueue.Arn'
+        Protocol: "sqs"
+        TopicArn: arn:aws:sns:eu-west-1:501082649462:ProductBought.fifo
+
     ProductsTable:
       Type: AWS::DynamoDB::Table
       Properties:
@@ -112,18 +174,23 @@ resources:
         ProvisionedThroughput:
           ReadCapacityUnits: 5
           WriteCapacityUnits: 5
+
     ApiGatewayAuthorizer:
       Type: AWS::ApiGateway::Authorizer
       Properties:
         AuthorizerResultTtlInSeconds: 300
         IdentitySource: method.request.header.Authorization
         Name: Cognito
-        RestApiId: # API id, ref
-          Type: COGNITO_USER_POOLS
+        RestApiId: 
+          Ref: ApiGatewayRestApi
+        Type: COGNITO_USER_POOLS
         ProviderARNs:
-          -  # Cognito ARN
+          - !GetAtt 'CognitoUserPool.Arn'
 
 custom:
+  webpack:
+    webpackConfig: ./webpack.config.js
+    includeModules: true
   dynamodb:
     stages:
       - dev
