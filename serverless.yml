@@ -7,6 +7,11 @@ provider:
   runtime: nodejs12.x
   region: eu-west-1
   lambdaHashingVersion: 20201221
+  environment:
+    PRODUCTS_TABLE_NAME: products-${self:provider.stage}
+    ENDPOINT: "http://localhost:8000"
+    REGION: "localhost"
+    # DYNAMO_CONFIG: configs/${self:provider.stage}-dynamodb.yml
 
 plugins:
   - serverless-webpack
@@ -14,8 +19,99 @@ plugins:
   - serverless-dynamodb-seed
   - serverless-offline
 
+functions:
+  getAllProducts:
+    handler: src/lambdas/products/getAllProducts.default
+    events:
+      - http:
+          path: products
+          method: GET
+          cors: true
+
+  createProduct:
+    handler: src/lambdas/products/createProduct.default
+    events:
+      - http:
+          path: products
+          method: POST
+          cors: true
+
+  getProductById:
+    handler: src/lambdas/products/getProductById.default
+    events:
+      - http:
+          path: products/{id}
+          method: GET
+          cors: true
+
+  deleteProduct:
+    handler: src/lambdas/products/deleteProduct.default
+    events:
+      - http:
+          path: products/{id}
+          method: DELETE
+          cors: true
+
+  editProduct:
+    handler: src/lambdas/products/editProduct.default
+    events:
+      - http:
+          path: products/{id}
+          method: PATCH
+          cors: true
+
+  getAllCategories:
+    handler: src/lambdas/categories/getAllCategories.default
+    events:
+      - http:
+          path: categories
+          method: GET
+          cors: true
+
 resources:
   Resources:
+    ProductsTable:
+      Type: AWS::DynamoDB::Table
+      Properties:
+        TableName: ${self:provider.environment.PRODUCTS_TABLE_NAME}
+        AttributeDefinitions:
+          - AttributeName: id
+            AttributeType: S
+          - AttributeName: _id
+            AttributeType: S
+          - AttributeName: name
+            AttributeType: S
+          - AttributeName: discountedPrice
+            AttributeType: N
+        KeySchema:
+          - AttributeName: id
+            KeyType: HASH
+        GlobalSecondaryIndexes:
+          - IndexName: NameIndex
+            KeySchema:
+              - AttributeName: _id
+                KeyType: HASH
+              - AttributeName: name
+                KeyType: RANGE
+            Projection:
+              ProjectionType: "ALL"
+            ProvisionedThroughput:
+              ReadCapacityUnits: 5
+              WriteCapacityUnits: 5
+          - IndexName: PriceIndex
+            KeySchema:
+              - AttributeName: _id
+                KeyType: HASH
+              - AttributeName: discountedPrice
+                KeyType: RANGE
+            Projection:
+              ProjectionType: "ALL"
+            ProvisionedThroughput:
+              ReadCapacityUnits: 5
+              WriteCapacityUnits: 5
+        ProvisionedThroughput:
+          ReadCapacityUnits: 5
+          WriteCapacityUnits: 5
     ApiGatewayAuthorizer:
       Type: AWS::ApiGateway::Authorizer
       Properties:
@@ -39,3 +135,8 @@ custom:
       convertEmptyValues: true
     migration:
       dir: ./offline
+    seed:
+      products:
+        sources:
+          - table: ${self:provider.environment.PRODUCTS_TABLE_NAME}
+            sources: [./offline/seeds/products.seed.json]
