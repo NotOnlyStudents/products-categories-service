@@ -3,10 +3,5 @@
         "baseUrl": ".",
         "experimentalDecorators": true,
         "emitDecoratorMetadata": true,
-        "paths": {
-            "@libs/*": [
-                "src/libs/*"
-            ]
-        }
     }
 }
