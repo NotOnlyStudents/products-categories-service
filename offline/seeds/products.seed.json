@@ -7,7 +7,7 @@
         "description": "SOLDIER FIVE is an elite soldier's explosive memoir of his time within the Special Air Service (SAS) and, in particular, his experiences during the 1991 Gulf War. As a member of the Special Forces patrol now famously known by its call sign Bravo Two Zero, he and seven others were inserted hundreds of kilometres behind enemy lines. Their mission to reconnoitre targets, undertake surveillance of Scud missil sites and sabotage Iraqi communications links was to end in desperate failure.From the outset, the patrol was dogged by problems that contributed both directly and indirectly to the demise of the mission. The patrol's compromise, and subsequent attempts to evade Iraqi troops, resulted in four members of Bravo Two Zero being captured and a further three killed. One escaped. But the story goes further that the Gulf War itself. Despite numerous books, films and articles on the same subject, the British Government has done its utmost to thwart the release of SOLDIER FIVE, at one stage claiming the book in its entirety was confidential. A campaign of harassment that took some four and a half years of litigation to resolve has now resulted in this controversial publication. SOLDIER FIVE is a gripping and suspenseful account of one man's experiences as a Special Forces soldier. Revealing his conflicts and loyalties, and the relationships he forged both on and off the battlefield, this book is the resolution of a soldier's determined fight to see his story told.",
         "price": 20,
         "quantity": 47047,
-        "evidence": false,
+        "evidence": true,
         "discount": 16,
         "images": [
             "https://d1w7fb2mkkr3kw.cloudfront.net/assets/images/book/lrg/9781/8401/9781840189070.jpg"
@@ -32,7 +32,7 @@
         "description": "John Moran and Carl Williams were the two biggest rival drug barons in Australia. They certainly weren't partners, but they weren't sworn enemies. One day, they had a meeting to end a dispute over drug money. Thinking he could scare his rival into submission, Moran pulled the trigger on Carl but decided not to finish the job off. It turned out to be the biggest mistake of his life.  Carl was hell bent on revenge. Within months, most of the Moran family and a host of underworld figures would die in an astonishing spate of revenge killings which shook the public and the police to the core. Murder, greed, drugs, sex and corruption abound in a story that reads like a piece of gangster fiction. But in Underbelly, the bullets and the blood are grippingly real.  This is true crime of the highest order - the amazing story of a powerful man who did things his way and eventually orchestrated his own terrible downfall.",
         "price": 19,
         "quantity": 2733,
-        "evidence": false,
+        "evidence": true,
         "discount": 6,
         "images": [
             "https://d1w7fb2mkkr3kw.cloudfront.net/assets/images/book/mid/9781/8445/9781844547371.jpg"
@@ -51,7 +51,7 @@
         "description": "Sir Phillip knew that Eloise Bridgerton was a spinster, and so he'd proposed, figuring that she'd be homely and unassuming. Except she wasn't. The beautiful woman on his doorstep was anything but quiet, and when she stopped talking long enough to close her mouth, all he wanted to do was kiss her and more.",
         "price": 16,
         "quantity": 15463,
-        "evidence": false,
+        "evidence": true,
         "discount": 19,
         "images": [
             "https://d1w7fb2mkkr3kw.cloudfront.net/assets/images/book/lrg/9788/4163/9788416327867.jpg"
@@ -72,7 +72,7 @@
         "description": "The Third Book of General Ignorance  gathers together 180 questions, both new and previously featured on the  BBC TV programme's popular 'General Ignorance' round, and show why,  when it comes to general knowledge, none of us knows anything at all.",
         "price": 2,
         "quantity": 2246,
-        "evidence": false,
+        "evidence": true,
         "discount": 35,
         "images": [
             "https://d1w7fb2mkkr3kw.cloudfront.net/assets/images/book/lrg/9780/5713/9780571308996.jpg"
@@ -129,9 +129,9 @@
         "searchName": "1,227 qi facts to blow your socks off",
         "description": "Did you know that: cows moo in regional accents; the entire internet weighs less than a grain of sand; the dialling code from Britain to Russia is 007; potatoes have more chromosomes than human beings; the London Underground has made more money from its famous map than it has from running trains; Tintin is called Tantan in Japanese because TinTin is pronounced 'Chin chin' and means penis; the water in the mouth of a blue whale weighs more than its body; Scotland has twice as many pandas as Conservative MPs; Saddam's bunker was designed by the grandson of the woman who built Hitler's bunker; Under the Wildlife and Countryside Act of 1981, it is explicitly illegal in Britain to use a machinegun to kill a hedgehog.",
         "price": 20,
-        "quantity": 15237,
+        "quantity": -2,
         "evidence": false,
-        "discount": 20,
+        "discount": 0,
         "images": [
             "https://d1w7fb2mkkr3kw.cloudfront.net/assets/images/book/lrg/9780/5712/9780571297931.jpg"
         ],
@@ -140,7 +140,7 @@
             "Funny Books & Stories",
             "TV Tie-in Humour"
         ],
-        "discountedPrice": 16
+        "discountedPrice": 20
     },
     {
         "_id": "product",
@@ -1635,7 +1635,10 @@
         "evidence": false,
         "discount": 88,
         "images": [
-            "https://d1w7fb2mkkr3kw.cloudfront.net/assets/images/book/lrg/9781/7282/9781728214139.jpg"
+            "https://images-na.ssl-images-amazon.com/images/I/71CD7FYR2kL.jpg",
+            "https://images-na.ssl-images-amazon.com/images/I/51cc81zZBqL.jpg",
+            "https://hackingdarwin.com/wp-content/uploads/2019/04/book_logo_3.png",
+            "https://www.yumpu.com/en/image/facebook/63316970.jpg"
         ],
         "categories": [
             "Social Forecasting, Future Studies",
