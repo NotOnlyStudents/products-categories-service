@@ -6,23 +6,25 @@ import {
   contains,
   greaterThan,
   equals,
-  inList,
+  AttributePath,
+  FunctionExpression,
 } from '@aws/dynamodb-expressions';
 import {
   Product, ProductFilter, ProductPaginator, SortType,
 } from 'src/models/Product';
+import { ClientConfiguration } from 'aws-sdk/clients/dynamodb';
+import { parseDocument } from 'yaml';
 import ProductDynamo from 'src/models/ProductDynamo';
 import { v4 as uuidv4 } from 'uuid';
+import { readFileSync as readFile } from 'fs';
 import ProductRepository from './ProductRepository';
 
 class DynamoProductRepository implements ProductRepository {
   private readonly mapper: DataMapper;
 
   constructor() {
-    const dynamodb = new DynamoDB({
-      region: process.env.REGION,
-      endpoint: process.env.ENDPOINT,
-    });
+    const dynamoConfig: ClientConfiguration = parseDocument(readFile(process.env.DYNAMODB_CONFIG_FILE_PATH, 'utf-8')).toJSON();
+    const dynamodb = new DynamoDB(dynamoConfig);
 
     this.mapper = new DataMapper({ client: dynamodb });
   }
@@ -135,6 +137,9 @@ class DynamoProductRepository implements ProductRepository {
       ++total;
 
       if (filters.limit !== undefined) {
+        console.log(total,
+          (products.length < filters.limit)
+          && total > (filters.limit * filters.offset));
         if ((products.length < filters.limit)
           && total > (filters.limit * filters.offset)) {
           products.push(result);
