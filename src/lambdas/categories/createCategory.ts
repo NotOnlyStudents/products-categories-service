@@ -1,7 +1,7 @@
 import {
   Handler, APIGatewayProxyEvent, Callback, Context,
 } from 'aws-lambda';
-import getAllCategories from 'src/endpoints/categories/getAllCategories';
+import createCategory from 'src/endpoints/categories/createCategory';
 import DynamoCategoryRepository from 'src/repositories/DynamoCategoryRepository';
 
 import Response from 'src/responses/Response';
@@ -12,7 +12,7 @@ const handler: Handler = async (
   callback: Callback<Response>,
 ) => {
   try {
-    const response: Response = await getAllCategories(
+    const response: Response = await createCategory(
       new DynamoCategoryRepository(),
       event,
     );

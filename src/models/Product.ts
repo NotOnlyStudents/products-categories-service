@@ -1,5 +1,3 @@
-import { Category } from './Category';
-
 export interface Product {
   _id: string;
   id: string;
@@ -10,12 +8,12 @@ export interface Product {
   price?: number;
   evidence?: boolean;
   discount?: number;
-  categories?: Category[];
+  categories?: string[];
 }
 
 export interface ProductFilter {
   text?: string,
-  categories?: Category[],
+  categories?: string[],
   priceMax?: number,
   priceMin?: number,
   available?: boolean,

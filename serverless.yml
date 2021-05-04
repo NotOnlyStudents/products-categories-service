@@ -20,19 +20,17 @@ provider:
             - dynamodb:PutItem
             - dynamodb:UpdateItem
             - dynamodb:DeleteItem
-          Resource: '*'
+          Resource: "*"
   environment:
     PRODUCTS_TABLE_NAME: products-${self:provider.stage}
-    CATEGORIES_TABLE: categories-table-${self:provider.stage}
+    CATEGORIES_TABLE_NAME: categories-${self:provider.stage}
     QUEUE_NAME: bought-product-queue-${self:provider.stage}
     DEAD_QUEUE_NAME: dead-bought-product-queue-${self:provider.stage}
-    ENDPOINT: "http://localhost:8000"
-    REGION: "localhost"
-    # DYNAMO_CONFIG: configs/${self:provider.stage}-dynamodb.yml
+    DYNAMODB_CONFIG_FILE_PATH: configs/${self:provider.stage}-dynamo.yml
 
 package:
   individually: true
-    
+
 plugins:
   - serverless-webpack
   - serverless-dynamodb-local
@@ -88,6 +86,28 @@ functions:
           method: GET
           cors: true
 
+  createCategory:
+    handler: src/lambdas/categories/createCategory.default
+    events:
+      - http:
+          path: categories
+          method: POST
+          cors: true
+  editCategory:
+    handler: src/lambdas/categories/editCategory.default
+    events:
+      - http:
+          path: categories/{id}
+          method: PATCH
+          cors: true
+  deleteCategory:
+    handler: src/lambdas/categories/deleteCategory.default
+    events:
+      - http:
+          path: categories/{id}
+          method: DELETE
+          cors: true
+
 resources:
   Resources:
     BoughtProductQueue:
@@ -97,8 +117,7 @@ resources:
         DelaySeconds: 0
         VisibilityTimeout: 30
         RedrivePolicy:
-          deadLetterTargetArn:
-            !GetAtt 'DeadBoughtProduct.Arn'
+          deadLetterTargetArn: !GetAtt "DeadBoughtProduct.Arn"
 
     DeadBoughtProduct:
       Type: "AWS::SQS::Queue"
@@ -115,22 +134,33 @@ resources:
           Version: "2021-04-19"
           Statement:
             - Effect: Allow
-              Principal: '*'
+              Principal: "*"
               Action:
                 - sqs:SendMessage
-              Resource:
-                !GetAtt 'BoughtProductQueue.Arn'
+              Resource: !GetAtt "BoughtProductQueue.Arn"
               Condition:
                 ArnEquals:
-                  'aws:SourceArn': arn:aws:sns:eu-west-1:501082649462:ProductBought.fifo
+                  "aws:SourceArn": arn:aws:sns:eu-west-1:501082649462:ProductBought.fifo
 
     ProductBoughtTopicSubscription:
       Type: AWS::SNS::Subscription
       Properties:
-        Endpoint:
-          !GetAtt 'BoughtProductQueue.Arn'
+        Endpoint: !GetAtt "BoughtProductQueue.Arn"
         Protocol: "sqs"
         TopicArn: arn:aws:sns:eu-west-1:501082649462:ProductBought.fifo
+    CategoriesTable:
+      Type: AWS::DynamoDB::Table
+      Properties:
+        TableName: ${self:provider.environment.CATEGORIES_TABLE_NAME}
+        AttributeDefinitions:
+          - AttributeName: id
+            AttributeType: S
+        KeySchema:
+          - AttributeName: id
+            KeyType: HASH
+        ProvisionedThroughput:
+          ReadCapacityUnits: 5
+          WriteCapacityUnits: 5
 
     ProductsTable:
       Type: AWS::DynamoDB::Table
@@ -181,11 +211,11 @@ resources:
         AuthorizerResultTtlInSeconds: 300
         IdentitySource: method.request.header.Authorization
         Name: Cognito
-        RestApiId: 
+        RestApiId:
           Ref: ApiGatewayRestApi
         Type: COGNITO_USER_POOLS
         ProviderARNs:
-          - !GetAtt 'CognitoUserPool.Arn'
+          - !GetAtt "CognitoUserPool.Arn"
 
 custom:
   webpack:
@@ -207,3 +237,5 @@ custom:
         sources:
           - table: ${self:provider.environment.PRODUCTS_TABLE_NAME}
             sources: [./offline/seeds/products.seed.json]
+          - table: ${self:provider.environment.CATEGORIES_TABLE_NAME}
+            sources: [./offline/seeds/categories.seed.json]

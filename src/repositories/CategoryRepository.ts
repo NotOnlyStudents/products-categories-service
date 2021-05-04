@@ -1,7 +1,10 @@
-import { Category } from 'src/models/Category';
+import { Category, CategoryFilter } from 'src/models/Category';
 
 interface CategoryRepository {
-  getAllCategories(text: string): Promise<Category[]>;
+  getAll(filters: CategoryFilter): Promise<Category[]>;
+  save(category: Category): Promise<Category>;
+  edit(categoryToEdit: Category): Promise<Category>;
+  delete(id: string): Promise<void>;
 }
 
 export default CategoryRepository;

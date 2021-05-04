@@ -1,7 +1,7 @@
 import {
-  attribute, hashKey, rangeKey, table,
+  attribute, hashKey, table,
 } from '@aws/dynamodb-data-mapper-annotations';
-import { Category } from './Category';
+import { uncategorised } from './Category';
 import { Product } from './Product';
 
 @table(process.env.PRODUCTS_TABLE_NAME)
@@ -52,7 +52,7 @@ class ProductDynamo implements Product {
   discount?: number;
 
   @attribute()
-  categories?: Category[];
+  categories?: string[];
 
   constructor(
     id: string = '',
@@ -63,7 +63,7 @@ class ProductDynamo implements Product {
     images: string[] = [],
     price: number = 1,
     quantity: number = 0,
-    categories: Category[] = [],
+    categories: string[] = [],
   ) {
     this._id = 'product';
     this.id = id;
@@ -76,7 +76,11 @@ class ProductDynamo implements Product {
     this.images = images;
     this.price = price;
     this.quantity = quantity;
-    this.categories = categories;
+    if (categories.length) {
+      this.categories = categories;
+    } else {
+      this.categories = [uncategorised];
+    }
   }
 }
 
