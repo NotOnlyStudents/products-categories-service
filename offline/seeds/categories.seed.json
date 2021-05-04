@@ -1,4 +1,9 @@
 [
+	{
+			"id": "0",
+			"name": "Uncategorised",
+			"searchName": "uncategorised"
+	},
   {
       "id": "10db129a-ec95-4f65-8734-a3d9ce4fc5ea",
       "name": "Biography: General",

@@ -51,7 +51,7 @@
         "description": "Sir Phillip knew that Eloise Bridgerton was a spinster, and so he'd proposed, figuring that she'd be homely and unassuming. Except she wasn't. The beautiful woman on his doorstep was anything but quiet, and when she stopped talking long enough to close her mouth, all he wanted to do was kiss her and more.",
         "price": 2,
         "quantity": 79718,
-        "evidence": true,
+        "evidence": false,
         "discount": 29,
         "images": [
             "https://d1w7fb2mkkr3kw.cloudfront.net/assets/images/book/lrg/9788/4163/9788416327867.jpg"
@@ -92,7 +92,7 @@
         "description": "The Try Guys deliver their first book-an inspirational self-improvement guide that teaches you that the path to success is littered with humiliating detours, embarrassing mistakes, and unexpected failures.",
         "price": 9,
         "quantity": 23357,
-        "evidence": true,
+        "evidence": false,
         "discount": 48,
         "images": [
             "https://d1w7fb2mkkr3kw.cloudfront.net/assets/images/book/mid/9780/0083/9780008352516.jpg"
@@ -168,7 +168,7 @@
         "description": "For the millions of Americans who want spirituality without religion, Sam Harris's latest New York Times bestseller is a guide to meditation as a rational practice informed by neuroscience and psychology. From Sam Harris, neuroscientist and author of numerous New York Times bestselling books, Waking Up is for the twenty percent of Americans who follow no religion but who suspect that important truths can be found in the experiences of such figures as Jesus, the Buddha, Lao Tzu, Rumi, and the other saints and sages of history. Throughout this book, Harris argues that there is more to understanding reality than science and secular culture generally allow, and that how we pay attention to the present moment largely determines the quality of our lives. Waking Up is part memoir and part exploration of the scientific underpinnings of spirituality. No other book marries contemplative wisdom and modern science in this way, and no author other than Sam Harris--a scientist, philosopher, and famous skeptic--could write it.",
         "price": 15,
         "quantity": 40105,
-        "evidence": true,
+        "evidence": false,
         "discount": 60,
         "images": [
             "https://d1w7fb2mkkr3kw.cloudfront.net/assets/images/book/mid/9781/4516/9781451636024.jpg"
@@ -189,7 +189,7 @@
         "description": "Part of the Art of Coloring series, which has sold over 2 million copies across the U.S.",
         "price": 16,
         "quantity": 73362,
-        "evidence": true,
+        "evidence": false,
         "discount": 46,
         "images": [
             "https://d1w7fb2mkkr3kw.cloudfront.net/assets/images/book/lrg/9781/4847/9781484788899.jpg"
@@ -273,7 +273,7 @@
         "description": "Based on the beloved Radio 4 series, BLEAK EXPECTATIONS recounts the remarkable adventures of young Pip Bin as he tries to make his way in a world made all horrible by the machinations of his cruel guardian, Mr Gently Benevolent.",
         "price": 6,
         "quantity": 60553,
-        "evidence": true,
+        "evidence": false,
         "discount": 21,
         "images": [
             "https://d1w7fb2mkkr3kw.cloudfront.net/assets/images/book/lrg/9781/4721/9781472112583.jpg"
@@ -295,7 +295,7 @@
         "description": "What is it like to try to heal the body when the mind is under attack? In this gripping and illuminating book, Dr Allan Ropper reveals the extraordinary stories behind some of the life-altering afflictions that he and his staff are confronted with at the Neurology Unit of Harvard's Brigham and Women's Hospital.",
         "price": 7,
         "quantity": 72082,
-        "evidence": true,
+        "evidence": false,
         "discount": 55,
         "images": [
             "https://d1w7fb2mkkr3kw.cloudfront.net/assets/images/book/lrg/9781/7823/9781782395508.jpg"
@@ -355,7 +355,7 @@
         "description": "Few things are as fundamental to human happiness as sex, and few writers are as entertaining about the subject as Mary Roach.",
         "price": 7,
         "quantity": 71850,
-        "evidence": true,
+        "evidence": false,
         "discount": 39,
         "images": [
             "https://d1w7fb2mkkr3kw.cloudfront.net/assets/images/book/lrg/9781/8476/9781847672360.jpg"
@@ -422,7 +422,7 @@
         "description": "In 1994 Professor Bryan Sykes, a leading world authority on DNA and human evolution, was called in to examine the frozen remains of a man trapped in glacial ice in northern Italy. News of the discovery of the Ice Man and his age, which was put at over five thousand years old, fascinated the world. But what made the story particularly extraordinary was that Professor Sykes was also able to track down a living generic relative of the Ice Man, a woman living in Britain today.",
         "price": 13,
         "quantity": 17485,
-        "evidence": true,
+        "evidence": false,
         "discount": 62,
         "images": [
             "https://d1w7fb2mkkr3kw.cloudfront.net/assets/images/book/lrg/9780/5521/9780552152181.jpg"
@@ -463,7 +463,7 @@
         "description": "First published as Whatever Makes You Happy, the hilarious and moving novel about mothers and their adult sons, now a Netflix original movie starring Felicity Huffman, Angela Bassett and Patricia Arquette which has now been viewed on over 27 million accounts worldwide",
         "price": 10,
         "quantity": 50519,
-        "evidence": true,
+        "evidence": false,
         "discount": 0,
         "images": [
             "https://d1w7fb2mkkr3kw.cloudfront.net/assets/images/book/lrg/9781/5266/9781526608352.jpg"
@@ -484,7 +484,7 @@
         "description": "'In this book, Klaus Schwab and the World Economic Forum contribute significantly to one of the most important issues of our time - how to move forward in the Fourth Industrial Revolution' Jack Ma, Executive Chairman, Alibaba Group Holding, People's Republic of China",
         "price": 3,
         "quantity": 69798,
-        "evidence": true,
+        "evidence": false,
         "discount": 66,
         "images": [
             "https://d1w7fb2mkkr3kw.cloudfront.net/assets/images/book/lrg/9780/2413/9780241300756.jpg"
@@ -535,7 +535,7 @@
         "description": "Harry Hill's unexpurgated diary of his year promises to do for the celebrity memoir what the Hadron Collider has done for particle acceleration.",
         "price": 1,
         "quantity": 71332,
-        "evidence": true,
+        "evidence": false,
         "discount": 24,
         "images": [
             "https://d1w7fb2mkkr3kw.cloudfront.net/assets/images/book/lrg/9780/5712/9780571273386.jpg"
@@ -578,7 +578,7 @@
         "description": "Sixteen TV soundtracks of the award-winning TV show collected together for the first time, starring David Jason as ambitious market trader Del Boy Trotter, and Nicholas Lyndhurst as his younger brother Rodney Trotter.",
         "price": 12,
         "quantity": 578,
-        "evidence": true,
+        "evidence": false,
         "discount": 45,
         "images": [
             "https://d1w7fb2mkkr3kw.cloudfront.net/assets/images/book/lrg/9781/7852/9781785299667.jpg"
@@ -601,7 +601,7 @@
         "description": "This book is for da real Gs and ladies.",
         "price": 13,
         "quantity": 20373,
-        "evidence": true,
+        "evidence": false,
         "discount": 90,
         "images": [
             "https://d1w7fb2mkkr3kw.cloudfront.net/assets/images/book/lrg/9781/5291/9781529106299.jpg"
@@ -624,7 +624,7 @@
         "description": "A SUNDAY TIMES BOOK OF THE YEAR",
         "price": 6,
         "quantity": 27145,
-        "evidence": true,
+        "evidence": false,
         "discount": 60,
         "images": [
             "https://d1w7fb2mkkr3kw.cloudfront.net/assets/images/book/lrg/9780/1419/9780141986067.jpg"
@@ -647,7 +647,7 @@
         "description": "TV Go Home began life in the late 1990s as an outrageously funny website by Charlie Brooker which parodied the Radio Times, and was turned into a book in 2001 when Brooker was still a relative unknown. It was a brutal and surreal satire of the world of TV, media and celebrity, written with Brooker's trademark savage wit. Unavailable for some years, we are republishing it to reach his many thousands of new fans.",
         "price": 9,
         "quantity": 693,
-        "evidence": true,
+        "evidence": false,
         "discount": 3,
         "images": [
             "https://d1w7fb2mkkr3kw.cloudfront.net/assets/images/book/lrg/9780/5712/9780571272198.jpg"
@@ -707,7 +707,7 @@
         "description": "The most popular character (or is that \"characters\"?) in \"South Park\" can now be yours! Over the last few years Butters has become a fan favorite and his alter-ego, Professor Chaos, has only increased his popularity. This kit features a spectacular dual-window Mega Mini Kit box, and will release in time for Comedy Central's extensive 15th Anniversary of South Park events in October 2011.The kit includes one Butters figurine and one Professor Chaos figurine, plus a 16-page sticker booklet with eight full-color images of some of the most famous scenes featuring Butters and Professor Chaos.(c)2011 Comedy Partners. All Rights Reserved. SOUTH PARK and all related titles, logos, and characters are trademarks of Comedy Partners.",
         "price": 16,
         "quantity": 72613,
-        "evidence": true,
+        "evidence": false,
         "discount": 5,
         "images": [
             "https://d1w7fb2mkkr3kw.cloudfront.net/assets/images/book/lrg/9780/7624/9780762442560.jpg"
@@ -810,7 +810,7 @@
         "description": "With Reactions bestselling author Theodore Gray continues the journey through our molecular and chemical world that began with the tour de force The Elements and continued with Molecules. In The Elements, Gray gave us a never-before-seen, mesmerizing photographic view of the 118 elements in the periodic table. In Molecules, with the same phenomenal photographic acumen, plus beautifully rendered computer generated graphics, he showed us how the elements combine to form the content that makes up our universe, from table salt to oxygen to the panoply of colors and smells that surround us.",
         "price": 17,
         "quantity": 5434,
-        "evidence": true,
+        "evidence": false,
         "discount": 4,
         "images": [
             "https://d1w7fb2mkkr3kw.cloudfront.net/assets/images/book/lrg/9780/3163/9780316391221.jpg"
@@ -834,7 +834,7 @@
         "description": "Did you know that foreigners who want to live in Britain have to pass a government test to get in? It's true, and some of the questions are harder than \"Why does everyone hate Manchester United?\"",
         "price": 15,
         "quantity": 47507,
-        "evidence": true,
+        "evidence": false,
         "discount": 40,
         "images": [
             "https://d1w7fb2mkkr3kw.cloudfront.net/assets/images/book/lrg/9781/8460/9781846075469.jpg"
@@ -857,7 +857,7 @@
         "description": "For the 35th anniversary of iconic sitcom The Good Life, and in homage to Tom and Barbara Good, Giles Coren and Sue Perkins are trying out self-sufficiency in the suburbs. But is it really possible to live out of the rat race and off grid in modern Britain?",
         "price": 12,
         "quantity": 14977,
-        "evidence": true,
+        "evidence": false,
         "discount": 96,
         "images": [
             "https://d1w7fb2mkkr3kw.cloudfront.net/assets/images/book/lrg/9781/8499/9781849900591.jpg"
@@ -879,7 +879,7 @@
         "description": "'Each part of your body will be working perfectly as a harmonious whole. You will even find lines disappearing, weight normalizing, and posture straightening.' -- Louise L. Hay",
         "price": 14,
         "quantity": 46050,
-        "evidence": true,
+        "evidence": false,
         "discount": 42,
         "images": [
             "https://d1w7fb2mkkr3kw.cloudfront.net/assets/images/book/lrg/9781/5617/9781561706020.jpg"
@@ -902,7 +902,7 @@
         "description": "",
         "price": 13,
         "quantity": 31156,
-        "evidence": true,
+        "evidence": false,
         "discount": 30,
         "images": [
             "https://d1w7fb2mkkr3kw.cloudfront.net/assets/images/book/lrg/9780/5712/9780571274871.jpg"
@@ -921,7 +921,7 @@
         "description": "Harry Hill's unexpurgated diary of his year promises to do for the celebrity memoir what the Hadron Collider has done for particle acceleration. Think Samuel Pepys meets Katie Price. This frank and sometimes controversial diary details one hectic year in the eye of the showbiz storm, cut with a heavy mix of the day-to-day goings on in Bexhill, where Harry lives at home with his mother and occasional Filipino fiance, Lay Dee. Follow the near fatal goings-on during Harry's filming of Britain's \"Most Dangerous Roads\", his attempts to become a judge on \"X Factor\" and his struggle to meet the Welsh chanteuse Duffy at Warwick Avenue. Read of his dog's ongoing battle with the bottle, and how he is sacked from the sniffer staff at Gatwick Airport due to sexual harassment. Learn how Harry's Nan gets on in her holiday home in Iraq, her affair with the milkman and her subsequent struggle to have fun whilst living on a curfew.",
         "price": 20,
         "quantity": 42976,
-        "evidence": true,
+        "evidence": false,
         "discount": 26,
         "images": [
             "https://d1w7fb2mkkr3kw.cloudfront.net/assets/images/book/lrg/9780/5712/9780571272907.jpg"
@@ -980,7 +980,7 @@
         "description": "In Lisa Simpson's Guide to Geek Chic, Springfield's most sensitive student reveals the secrets of being a misunderstood geek goddess. Geeks are no longer just those sideshow freaks biting the heads off chickens. Geeks are now freaks about all kinds of other things and are proud to let it show. Geek is now chic, nerdy is now noble, and dorky is now desirable, as they always should have been. The readers, the writers, the scientists, and the creators are now at the top of the heap, and it's time to show the rest of the world what they are made of...beside mostly oxygen, carbon, hydrogen, nitrogen, calcium, and phosphorus, of course. Let your geek flag fly!",
         "price": 3,
         "quantity": 62633,
-        "evidence": true,
+        "evidence": false,
         "discount": 76,
         "images": [
             "https://d1w7fb2mkkr3kw.cloudfront.net/assets/images/book/lrg/9780/5930/9780593073032.jpg"
@@ -998,7 +998,7 @@
         "description": "Against the backdrop of unprecedented concern for the future of health care, this  Very Short Introduction surveys the history of medicine from classical times to the present. Focussing on the key turning points in the history of Western medicine, such as the advent of hospitals and the rise of experimental medicine, Bill Bynum offers insights into medicine's past, while at the same time engaging with contemporary issues, discoveries, and controversies.",
         "price": 17,
         "quantity": 18592,
-        "evidence": true,
+        "evidence": false,
         "discount": 73,
         "images": [
             "https://d1w7fb2mkkr3kw.cloudfront.net/assets/images/book/mid/9780/1992/9780199215430.jpg"
@@ -1017,7 +1017,7 @@
         "description": "",
         "price": 11,
         "quantity": 98797,
-        "evidence": true,
+        "evidence": false,
         "discount": 22,
         "images": [
             "https://d1w7fb2mkkr3kw.cloudfront.net/assets/images/book/lrg/9781/8605/9781860511226.jpg"
@@ -1109,7 +1109,7 @@
         "description": "THE NEW YORK TIMES BESTSELLER ** THE SUNDAY TIMES BESTSELLER",
         "price": 6,
         "quantity": 88080,
-        "evidence": true,
+        "evidence": false,
         "discount": 92,
         "images": [
             "https://d1w7fb2mkkr3kw.cloudfront.net/assets/images/book/lrg/9780/2413/9780241379394.jpg"
@@ -1178,7 +1178,7 @@
         "description": "Dr Jacob Bronowksi's The Ascent of Man traces the development of human society through our understanding of science.",
         "price": 1,
         "quantity": 70849,
-        "evidence": true,
+        "evidence": false,
         "discount": 34,
         "images": [
             "https://d1w7fb2mkkr3kw.cloudfront.net/assets/images/book/lrg/9781/8499/9781849901154.jpg"
@@ -1204,7 +1204,7 @@
         "description": "What enables individually simple insects like ants to act with such precision and purpose as a group? How do trillions of neurons produce something as extraordinarily complex as consciousness? In this remarkably clear and companionable book, leading complex systems scientist Melanie Mitchell provides an intimate tour of the sciences of complexity, a broad set of efforts that seek to explain how large-scale complex, organized, and adaptive behavior can emerge from",
         "price": 20,
         "quantity": 37297,
-        "evidence": true,
+        "evidence": false,
         "discount": 5,
         "images": [
             "https://d1w7fb2mkkr3kw.cloudfront.net/assets/images/book/mid/9780/1997/9780199798100.jpg"
@@ -1243,7 +1243,7 @@
         "description": "For ten years Louis Theroux has been making programmes about off-beat characters on the fringes of US society. Now he revisits America and the people who have most fascinated him to try to discover what motivates them, why they believe the things they believe, and to find out what has happened to them since he last saw them. Along the way Louis thinks about what drives him to spend so much time among weird people, and considers whether he's learned anything about himself in the course of ten years working with them. Has he manipulated the people he's interviewed, or have they manipulated him? From his Las Vegas base, Louis revisits the assorted dreamers and outlaws who have been his TV feeding ground. Attempting to understand a little about himself and the workings of his own mind, Louis considers questions such as: What is the difference between pathology and 'normal' weirdness? Is there something particularly weird about Americans? What does it mean to be weird, or 'to be yourself'? And do we choose our beliefs or do our beliefs choose us?",
         "price": 11,
         "quantity": 60068,
-        "evidence": true,
+        "evidence": false,
         "discount": 8,
         "images": [
             "https://d1w7fb2mkkr3kw.cloudfront.net/assets/images/book/lrg/9781/4050/9781405091848.jpg"
@@ -1268,7 +1268,7 @@
         "description": "A clarion call to save humanity's most essential fellow creatures - and our health",
         "price": 4,
         "quantity": 42349,
-        "evidence": true,
+        "evidence": false,
         "discount": 34,
         "images": [
             "https://d1w7fb2mkkr3kw.cloudfront.net/assets/images/book/lrg/9781/7807/9781780746883.jpg"
@@ -1288,7 +1288,7 @@
         "description": "John Cleese, Prunella Scales, Connie Booth and Andrew Sachs star in two BBC TV episodes, 'The Rat' and 'The Builders'.   In 'The Rat', the hotel faces closure due to lack of cleanliness - and two dead `pig-ee-ons' in the watertank. Basil, Sybil and the staff have until the health inspector returns tomorrow to sort out all the problems. First, Basil has to get rid of Manuel's `hamster'.  Basil and Sybil have the weekend off in 'The Builders' and leave Polly in charge. But, it's O'Reilly's men that are coming and Polly goes upstairs for a siesta. Which leaves Manuel in charge...   Vintage Beeb: classic albums first available as BBC LPs, now on CD for the first time ever.   This recording was previously released on LP in 1981.",
         "price": 4,
         "quantity": 67644,
-        "evidence": true,
+        "evidence": false,
         "discount": 23,
         "images": [
             "https://d1w7fb2mkkr3kw.cloudfront.net/assets/images/book/lrg/9781/4084/9781408409862.jpg"
@@ -1354,7 +1354,7 @@
         "description": "",
         "price": 10,
         "quantity": 38085,
-        "evidence": true,
+        "evidence": false,
         "discount": 92,
         "images": [
             "https://d1w7fb2mkkr3kw.cloudfront.net/assets/images/book/lrg/9781/9061/9781906128098.jpg"
@@ -1412,7 +1412,7 @@
         "description": "Comedian, broadcaster, and writer Steve N Allen takes a look at the news in a different way",
         "price": 12,
         "quantity": 38365,
-        "evidence": true,
+        "evidence": false,
         "discount": 96,
         "images": [
             "https://d1w7fb2mkkr3kw.cloudfront.net/assets/images/book/lrg/9781/9134/9781913408619.jpg"
@@ -1554,7 +1554,7 @@
         "description": "",
         "price": 17,
         "quantity": 78237,
-        "evidence": true,
+        "evidence": false,
         "discount": 59,
         "images": [
             "https://d1w7fb2mkkr3kw.cloudfront.net/assets/images/book/lrg/9781/8605/9781860513299.jpg"
@@ -1612,7 +1612,7 @@
         "description": "Paul Abbott's \"Shameless\" has consistently been the best thing on television since it started on Channel 4 in 2004. Fearless, controversial and downright hilarious, it goes where other popular dramas fear to tread. Then, it necks a couple of pills, washes them down with several pints of lager and carries on until it falls over. Now, the Gallaghers and friends (and enemies) have put pen to paper to bring you the ultimate lifestyle guide. Frank passes on his unique thoughts about the trials of parenting. Sheila gets down and dirty with How Clean is Your Council House? Debbie shares some of her favourite recipes and nutritional tips in a \"Shameless\" version of \"You Are What You Eat\". Ian gives us his gay guide to the Chatsworth Estate. And, of course, the Gallaghers together share their knowledge of how to throw a great party...Award-winning writer Paul Abbott has created the perfect companion to one of Britain's best loved dramas. If you can't get enough of the Chatworth Estate's favourite family, this is the book for you.",
         "price": 18,
         "quantity": 34465,
-        "evidence": true,
+        "evidence": false,
         "discount": 41,
         "images": [
             "https://d1w7fb2mkkr3kw.cloudfront.net/assets/images/book/lrg/9781/9050/9781905026364.jpg"
@@ -1656,7 +1656,7 @@
         "description": "Tony Hancock stars in four more specially selected BBC TV episodes: \"The Economy Drive\" - 25 September 1959; \"The Cold\" - 4 March 1960; \"The Emigrant\" - 18 March 1960; \"The Baby Sitters\" - 8 April 1960. Once again, Tony Hancock stars as the loveable curmudgeon, in four original television soundtracks written by the character's creators, Ray Galton and Alan Simpson. In \"The Economy Drive\", Hancock returns home from holiday to find that Sid has left the TV and all the lights on, and failed to cancel the milk and the papers. It's time to make some cutbacks, while \"The Cold\" sees Hancock trying to find a cure for a winter cold, but not even his doctor can help. In \"The Emigrant\", Hancock decides he's had enough of England, and decides to emigrate - even though none of the colonies seem keen to have him, while \"The Baby Sitters\" finds Hancock and Sid employed as baby sitters in a plush, modern house with all the gadgets. But after raiding the host's larder and drinks cabinet the two of them fall asleep. Only when the parents return do they realise there's been a burglary...Featuring a cast including Sid James, Arthur Mullard and John Le Mesurier, these four episodes show the master of misery at his very best.",
         "price": 9,
         "quantity": 10478,
-        "evidence": true,
+        "evidence": false,
         "discount": 16,
         "images": [
             "https://d1w7fb2mkkr3kw.cloudfront.net/assets/images/book/lrg/9780/5635/9780563504603.jpg"
@@ -1674,7 +1674,7 @@
         "description": "Matt and David haven't forgotten \"Little Britain's\" origins on BBC Radio 4 and, using their own personal archive, they have helped compile this special, limited edition tin. This tin contains the complete radio series - plus the pilot show - an exclusive interview with Matt Lucas and David Walliams, a 60-minute special about the inspiration behind \"Little Britain\", and a unique full-length DVD featuring behind-the-scenes footage. The Complete Radio Series - All 8 episodes from Series 1 and Series 2, plus pilot episode, never-broadcast sketches and outtakes. The Story of \"Little Britain CD\" - An extended, exclusive interview with Matt Lucas and David Walliams about the origins of the \"Little Britain\" radio series; rare audio clips from the pilot shows, 'Sir Bernard Chumley's Soiree' and 'Make a Difference...with Lucas and Walliams'; narrated by Anthony Head. \"Little Britain\" on Radio DVD - This is an exclusive full-length DVD, with behind-the-scenes footage from two live recording sessions of the radio series. It has a specially-recorded introduction by Matt and David.",
         "price": 10,
         "quantity": 36901,
-        "evidence": true,
+        "evidence": false,
         "discount": 69,
         "images": [
             "https://d1w7fb2mkkr3kw.cloudfront.net/assets/images/book/lrg/9780/5635/9780563504146.jpg"
@@ -1784,7 +1784,7 @@
         "description": "A humorous and playful gift book from the Hanna-Barbera stable. Everything you need to know about making the most of life. The Hanna-Barbera Guide to Life is a humorous guide to living, featuring advice, anecdotes and wisdom from the slapstick world of Hanna-Barbera's cartoon characters - ideal for those seeking for the deeper meaning to life (sort of). Suitable for fans of the classic Hanna-Barbera cartoons - whether it's The Jetsons, Wacky Races, Yogi Bear, Penelope Pitstop or The Flintstones. This laugh-aloud gift book helps to bring back the glory days of cartoons for readers of all ages.",
         "price": 15,
         "quantity": 38447,
-        "evidence": true,
+        "evidence": false,
         "discount": 32,
         "images": [
             "https://d1w7fb2mkkr3kw.cloudfront.net/assets/images/book/lrg/9781/4052/9781405248594.jpg"
@@ -1860,7 +1860,7 @@
         "description": "Episodes from the second series of the BBC TV comedy set in a factory canteen.",
         "price": 5,
         "quantity": 51422,
-        "evidence": true,
+        "evidence": false,
         "discount": 85,
         "images": [
             "https://d1w7fb2mkkr3kw.cloudfront.net/assets/images/book/lrg/9780/5635/9780563535164.jpg"
@@ -1975,7 +1975,7 @@
         "description": "",
         "price": 10,
         "quantity": 94823,
-        "evidence": true,
+        "evidence": false,
         "discount": 62,
         "images": [
             "https://d1w7fb2mkkr3kw.cloudfront.net/assets/images/book/lrg/9781/9085/9781908571205.jpg"
@@ -1993,7 +1993,7 @@
         "description": "\"Fascinating and exhilarating-Sean B. Carroll at his very best.\"-Bill Bryson, author of The Body: A Guide for Occupants",
         "price": 4,
         "quantity": 20125,
-        "evidence": true,
+        "evidence": false,
         "discount": 21,
         "images": [
             "https://d1w7fb2mkkr3kw.cloudfront.net/assets/images/book/lrg/9780/6912/9780691201757.jpg"
@@ -2037,7 +2037,7 @@
         "description": "",
         "price": 14,
         "quantity": 26880,
-        "evidence": true,
+        "evidence": false,
         "discount": 66,
         "images": [
             "https://d1w7fb2mkkr3kw.cloudfront.net/assets/images/book/lrg/9780/9547/9780954770235.jpg"
@@ -2127,7 +2127,7 @@
         "description": "Letter-a-week may be a ubiquitous approach to teaching alphabet knowledge, but that doesn't mean it's an effective one. In No More Teaching a Letter a Week, early literacy researcher Dr. William Teale helps us understand that alphabet knowledge is more than letter recognition, and identifies research-based principles of effective alphabet instruction, which constitutes the foundation for phonics teaching and learning. Literacy coach Rebecca McKay shows us how to bring those principles to life through purposeful practices that invite children to create an identity through print.",
         "price": 18,
         "quantity": 30378,
-        "evidence": true,
+        "evidence": false,
         "discount": 50,
         "images": [
             "https://d1w7fb2mkkr3kw.cloudfront.net/assets/images/book/lrg/9780/3250/9780325062563.jpg"
@@ -2204,7 +2204,7 @@
         "description": "Part of The New Art and Science of Teaching series",
         "price": 6,
         "quantity": 79620,
-        "evidence": true,
+        "evidence": false,
         "discount": 30,
         "images": [
             "https://d1w7fb2mkkr3kw.cloudfront.net/assets/images/book/lrg/9781/9476/9781947604315.jpg"
@@ -2225,7 +2225,7 @@
         "description": "Each title in the series is intended to serve both as a basis for training courses and seminars, and as a reference text.",
         "price": 15,
         "quantity": 14827,
-        "evidence": true,
+        "evidence": false,
         "discount": 64,
         "images": [
             "https://d1w7fb2mkkr3kw.cloudfront.net/assets/images/book/lrg/9780/1944/9780194403184.jpg"
@@ -2313,7 +2313,7 @@
         "description": "Universal Design for Learning is the best way to teach all students effectively-but how can a busy teacher get started with UDL right now? Answers are in this vibrant, research-based guidebook, created by seasoned teacher and former UDL Coordinator Loui Lord Nelson. K-12 educators will learn how to use the three key principles of UDL-Engagement, Representation, and Action & Expression-to present information in multiple ways and meet the needs of diverse learners. Written in first person, like a face-to-face talk with a passionate educator, the book gives teachers a reader-friendly UDL primer and a practical framework for implementation, with detailed guidelines on lesson planning and checkpoints that help them stay on track.",
         "price": 2,
         "quantity": 51798,
-        "evidence": true,
+        "evidence": false,
         "discount": 6,
         "images": [
             "https://d1w7fb2mkkr3kw.cloudfront.net/assets/images/book/lrg/9781/5985/9781598573503.jpg"
@@ -2366,7 +2366,7 @@
         "description": "The authoritative masterpiece (L. A. Times) on the Apollo space program and NASA's journey to the moon This acclaimed portrait of heroism and ingenuity captures a watershed moment in human history. The astronauts themselves have called it the definitive account of their missions. On the night of July 20, 1969, our world changed forever when Neil Armstrong and Buzz Aldrin walked on the moon. Based on in-depth interviews with twenty-three of the twenty-four moon voyagers, as well as those who struggled to get the program moving, A Man on the Moon conveys every aspect of the Apollo missions with breathtaking immediacy and stunning detail. A Man on the Moon is also the basis for the acclaimed miniseries produced by Tom Hanks, From the Earth to the Moon, now airing and streaming again on HBO in celebration of the 50th anniversary of Apollo 11.",
         "price": 2,
         "quantity": 85942,
-        "evidence": true,
+        "evidence": false,
         "discount": 42,
         "images": [
             "https://d1w7fb2mkkr3kw.cloudfront.net/assets/images/book/lrg/9780/1431/9780143112358.jpg"
@@ -2412,7 +2412,7 @@
         "description": "Create and sustain a learning environment where students thrive and stakeholders are accurately informed of student progress. Clarify the purpose of grades, craft a vision statement aligned with this purpose, and discover research-based strategies to implement effective grading and reporting practices. Identify policies and practices that render grading inaccurate, and understand the role grades play in students' future success and opportunities.",
         "price": 19,
         "quantity": 1006,
-        "evidence": true,
+        "evidence": false,
         "discount": 39,
         "images": [
             "https://d1w7fb2mkkr3kw.cloudfront.net/assets/images/book/lrg/9781/9355/9781935542773.jpg"
@@ -2435,7 +2435,7 @@
         "description": "This book shows how schools can--and must--develop expertise in \"learning variation\" (understanding how different kinds of minds learn) and apply this knowledge to classroom instruction in order to address the chronic learning challenges and achievement gap faced by millions of students. Barringer shows how using what we know about learning variation with a focus on discovering learning strengths, not just deficits, can help schools create plans for success for those students who often find it elusive. The book specifically addresses how school leaders can incorporate this knowledge into instructional practice and school-level policy through various professional development strategies.  Schools for All Kinds of Minds: * Provides a readable synthesis of the latest research from neuroscience, cognitive science, and child and adolescent development as it relates to understanding learning and its many variations. * Links this information to strategies for understanding struggling learners and adapting school practices to accommodate a wider array of learning differences in a classroom.",
         "price": 6,
         "quantity": 87266,
-        "evidence": true,
+        "evidence": false,
         "discount": 10,
         "images": [
             "https://d1w7fb2mkkr3kw.cloudfront.net/assets/images/book/lrg/9780/4705/9780470505151.jpg"
@@ -2570,7 +2570,7 @@
         "description": "Students today are growing up in a digital world. These \"digital natives\" learn in new and different ways, so educators need new approaches to make learning both real and relevant for today's students.",
         "price": 10,
         "quantity": 73267,
-        "evidence": true,
+        "evidence": false,
         "discount": 84,
         "images": [
             "https://d1w7fb2mkkr3kw.cloudfront.net/assets/images/book/lrg/9781/4129/9781412975414.jpg"
@@ -2727,7 +2727,7 @@
         "description": "Can you multiply 362 x .5 quickly in your head? Could you readily calculate the square of 41? How much is 635 divided by 21/2? Can 727,648 be evenly divided by 8?",
         "price": 1,
         "quantity": 36751,
-        "evidence": true,
+        "evidence": false,
         "discount": 37,
         "images": [
             "https://d1w7fb2mkkr3kw.cloudfront.net/assets/images/book/lrg/9780/4862/9780486246116.jpg"
@@ -2766,7 +2766,7 @@
         "description": "This unique Library gives teachers and specialists a stimulating, systematic way to develop positive social behaviors in students of all abilities, grades 4-12. Included are over 125 tested lessons and reproducible worksheets in two separately printed, self-contained volumes, each tailored to the developmental needs of students at a particular grade level, 4-6 or 7-12. For easy use, the lessons in each volume follow a uniform format, including titles, behavioral objective, and simple 8-step lesson plan. The lesson activities and worksheets are based on real-life situations and help build students' self-esteem, self-control, and respect for the rights of others.",
         "price": 12,
         "quantity": 65091,
-        "evidence": true,
+        "evidence": false,
         "discount": 63,
         "images": [
             "https://d1w7fb2mkkr3kw.cloudfront.net/assets/images/book/mid/9780/8762/9780876284742.jpg"
@@ -2842,7 +2842,7 @@
         "description": "Viewing the maths lesson as an opportunity for pupils to develop a deep understanding of mathematical concepts and relationships, rather than simply to follow fixed processes that lead to 'the answer', is increasingly recognised as the pinnacle of best practice in maths education.",
         "price": 20,
         "quantity": 18851,
-        "evidence": true,
+        "evidence": false,
         "discount": 80,
         "images": [
             "https://d1w7fb2mkkr3kw.cloudfront.net/assets/images/book/lrg/9781/7858/9781785833502.jpg"
@@ -2866,7 +2866,7 @@
         "description": "With 29 real life and relatable stories at its heart, this practical resource is designed to help build self-esteem and body confidence in children aged 5-11. Each story is the focus of a ready-to-use lesson plan, covering common issues that affect children such as a lack of body confidence, feeling pressured by peers and worries about puberty. The stories are preceded by guidance on how to introduce the topic and the learning outcomes, and they are followed by a range of activities to reinforce the messages being taught. The stories can either be read aloud to a class or group or photocopied and shared for individual reading.",
         "price": 12,
         "quantity": 26078,
-        "evidence": true,
+        "evidence": false,
         "discount": 25,
         "images": [
             "https://d1w7fb2mkkr3kw.cloudfront.net/assets/images/book/lrg/9781/8490/9781849057134.jpg"
@@ -2895,7 +2895,7 @@
         "description": "In schools, every day is \"\"game day.\"\" Every day, teachers need the best resources and forms of support because students deserve the best we as educators can offer. An instructional playbook aims to serve as that kind of support: a tool that coaches can use to help teachers match specific learning goals with the right research-based instructional strategies.",
         "price": 3,
         "quantity": 46270,
-        "evidence": true,
+        "evidence": false,
         "discount": 35,
         "images": [
             "https://d1w7fb2mkkr3kw.cloudfront.net/assets/images/book/lrg/9781/4166/9781416629924.jpg"
@@ -2939,7 +2939,7 @@
         "description": "Fantastic strategies for getting high school students excited about writing This book offers 50 creative writing lesson plans from the imaginative and highly acclaimed 826 National writing labs. Created as a resource to reach all students (even those most resistant to creative writing), the off-beat and attention-grabbing lessons include such gems as \"Literary Facebooks,\" where students create a mock Facebook profile based on their favorite literary character, as well as highly practical lessons like the \"College Application Essay Boot Camp.\" These writing lessons are written by experts and favorite novelists, actors, and other entertainers pitched in too. * Road-tested lessons from a stellar national writing lab * Inventive and unique lessons that will appeal to even the most difficult-to-reach students * Includes a chart linking lessons to the Common Core State Standards 826 National is an organization committed to supporting teachers, publishing student work, and offering services for English language learners.",
         "price": 8,
         "quantity": 22994,
-        "evidence": true,
+        "evidence": false,
         "discount": 1,
         "images": [
             "https://d1w7fb2mkkr3kw.cloudfront.net/assets/images/book/lrg/9781/1180/9781118024324.jpg"
@@ -2965,7 +2965,7 @@
         "description": "Offering an alternative approach to standardization and data-driven mandates, this book puts children at the center of planning. Using The Thinking Lens (R) protocol teachers can translate educational theories into concrete ideas for working with children and families. Learn to create a classroom culture, develop routines, and use learning stories to enhance experiences for the children in your care.",
         "price": 5,
         "quantity": 52649,
-        "evidence": true,
+        "evidence": false,
         "discount": 26,
         "images": [
             "https://d1w7fb2mkkr3kw.cloudfront.net/assets/images/book/lrg/9781/6055/9781605545226.jpg"
@@ -2988,7 +2988,7 @@
         "description": "The promise of a hot, satisfying meal in ten minutes or less is no longer the exclusive calling card of cheap pizza delivery. Everything from dinners on the run to crave-worthy snacks for a crowd can be yours in less time than it takes to hunt down those crusty take-out menus.",
         "price": 8,
         "quantity": 61746,
-        "evidence": true,
+        "evidence": false,
         "discount": 79,
         "images": [
             "https://d1w7fb2mkkr3kw.cloudfront.net/assets/images/book/lrg/9781/5107/9781510727595.jpg"
@@ -3008,7 +3008,7 @@
         "description": "The challenges to humanity posed by the digital future, the first detailed examination of the unprecedented form of power called \"surveillance capitalism,\" and the quest by powerful corporations to predict and control our behavior.  In this masterwork of original thinking and research, Shoshana Zuboff provides startling insights into the phenomenon that she has named surveillance capitalism. The stakes could not be higher: a global architecture of behavior modification threatens human nature in the twenty-first century just as industrial capitalism disfigured the natural world in the twentieth.  Zuboff vividly brings to life the consequences as surveillance capitalism advances from Silicon Valley into every economic sector. Vast wealth and power are accumulated in ominous new \"behavioral futures markets,\" where predictions about our behavior are bought and sold, and the production of goods and services is subordinated to a new \"means of behavioral modification.\"  The threat has shifted from a totalitarian Big Brother state to a ubiquitous digital architecture: a \"Big Other\" operating in the interests of surveillance capital. Here is the crucible of an unprecedented form of power marked by extreme concentrations of knowledge and free from democratic oversight. Zuboff's comprehensive and moving analysis lays bare the threats to twenty-first century society: a controlled \"hive\" of total connection that seduces with promises of total certainty for maximum profit -- at the expense of democracy, freedom, and our human future.  With little resistance from law or society, surveillance capitalism is on the verge of dominating the social order and shaping the digital future -- if we let it.",
         "price": 15,
         "quantity": 13797,
-        "evidence": true,
+        "evidence": false,
         "discount": 69,
         "images": [
             "https://d1w7fb2mkkr3kw.cloudfront.net/assets/images/book/lrg/9781/6103/9781610395694.jpg"
@@ -3036,7 +3036,7 @@
         "description": "Our traditional Great Teacher teaches by telling, inspiring students through eloquent, passionate oration. For Donald Finkel this view is destructively narrow: it takes for granted that teachers teach, fundamentally and centrally, by telling students what they are supposed to know. In Teaching with Your Mouth Shut,  Finkel proposes an alternative vision of teachingone that is deeply democratic in its implications.",
         "price": 7,
         "quantity": 82792,
-        "evidence": true,
+        "evidence": false,
         "discount": 93,
         "images": [
             "https://d1w7fb2mkkr3kw.cloudfront.net/assets/images/book/lrg/9780/8670/9780867094695.jpg"
@@ -3057,7 +3057,7 @@
         "description": "Help students become confident, fluent readers using poetry. Compiled by a reading specialist, this book includes 50 engaging poems specially selected for building different aspects of oral reading fluency: poems to build intonation and phrasing, poems to build phonics patterns and sight words, and poems for repeated, expert readings. Also includes poems that are just right for partner and small group reading. Plus, research-based background on reading fluency and oral reading strategies to help students succeed.",
         "price": 13,
         "quantity": 26548,
-        "evidence": true,
+        "evidence": false,
         "discount": 60,
         "images": [
             "https://d1w7fb2mkkr3kw.cloudfront.net/assets/images/book/lrg/9780/4394/9780439438308.jpg"
@@ -3100,7 +3100,7 @@
         "description": "An extraordinary collection of interviews with the beloved doctor and author, whose research and books inspired generations of readers. Oliver Sacks--called the poet laureate of medicine by the New York Times--illuminated the mysteries of the brain for a wide audience in a series of richly acclaimed books, including Awakenings and The Man Who Mistook His Wife for a Hat, and numerous New Yorker articles. In this collection of interviews, Sacks is at his most candid and disarming, rich with insights about his life and work. Any reader of Sacks will find in this book an entirely new way of looking at a brilliant writer.",
         "price": 4,
         "quantity": 23833,
-        "evidence": true,
+        "evidence": false,
         "discount": 83,
         "images": [
             "https://d1w7fb2mkkr3kw.cloudfront.net/assets/images/book/lrg/9781/6121/9781612195773.jpg"
@@ -3143,7 +3143,7 @@
         "description": "Demonstrate how teachers can use a \"conceptual lens\" to design instructional units and differentiated lessons that deepen students' thinking skills and inspire a genuine love of learning.",
         "price": 12,
         "quantity": 88383,
-        "evidence": true,
+        "evidence": false,
         "discount": 52,
         "images": [
             "https://d1w7fb2mkkr3kw.cloudfront.net/assets/images/book/lrg/9781/4129/9781412966276.jpg"
@@ -3167,7 +3167,7 @@
         "description": "The ultimate game plan for complete one-dish vegetarian suppers--for anyone aspiring to eat a more plant-based diet.  Discover the pro-veggie, pro-flavor way to prepare fresh, healthy, high-quality plant-based dinners. In Simple Green Suppers, Susie Middleton demonstrates how to prepare seasonal vegetables in satisfying, filling suppers by pairing them with staple ingredients: noodles, grains, beans, greens, toast, tortillas, eggs, and broth. How you cook your veggies and how you combine them with other satisfying whole foods is the secret to delicious results. With 125 recipes for flavorful and veggie-forward dishes, tips on keeping a flexible and well-stocked pantry, and make-ahead and streamlining strategies, Simple Green Suppers is an essential resource that will make cooking delicious, easy vegetarian meals possible every night.",
         "price": 2,
         "quantity": 84195,
-        "evidence": true,
+        "evidence": false,
         "discount": 10,
         "images": [
             "https://d1w7fb2mkkr3kw.cloudfront.net/assets/images/book/lrg/9781/6118/9781611803365.jpg"
@@ -3236,7 +3236,7 @@
         "description": "What if learning was exciting? What if students felt important and empowered every time they walked into the building? What if parents looked forward to calls from their children's teachers and principals, instead of cringing when the school's number popped up on their phones? To Todd Nesloney and Adam Welcome, those aren't far-fetched what ifs; they can (and should) be a reality for every teacher, school, parent, and student. In Kids Deserve It!, Todd and Adam encourage you to think big and make learning fun and meaningful for students. While you're at it, you just might rediscover why you became an educator in the first place. Learn why you should be calling parents to praise your students (and employees). Discover ways to promote family interaction and improve relationships for kids at school and at home. Be inspired to take risks, shake up the status quo, and be a champion for your students. #KidsDeserveIt",
         "price": 3,
         "quantity": 74396,
-        "evidence": true,
+        "evidence": false,
         "discount": 25,
         "images": [
             "https://d1w7fb2mkkr3kw.cloudfront.net/assets/images/book/lrg/9780/9969/9780996989527.jpg"
@@ -3298,7 +3298,7 @@
         "description": "Teaching is tough, yet its rewards are huge. Every teacher wants to carry on getting better and better at what they do, but when you have so much on your plate already and only so many hours in the day, how can you find time for professional development? That's where 60-Second CPD comes in. This book is a compendium of 239 easily accessible ideas and theories for professional development, each digestible in roughly 60 seconds. It's a book that every teacher and leader, in every primary and secondary school, can return to again and again as the year moves on and their career progresses. Hanna Beech and Ross Morrison McGill have distilled the million and one ideas out there into one practical, concise and inspiration-packed book designed to build knowledge, provide opportunities for deep thought and reflection, and facilitate the sharing of ideas among colleagues and teams.",
         "price": 3,
         "quantity": 42534,
-        "evidence": true,
+        "evidence": false,
         "discount": 9,
         "images": [
             "https://d1w7fb2mkkr3kw.cloudfront.net/assets/images/book/lrg/9781/9136/9781913622107.jpg"
@@ -3370,7 +3370,7 @@
         "description": "The Arctic Guide presents the traveler and naturalist with a portable, authoritative guide to the flora and fauna of earth's northernmost region. Featuring superb color illustrations, this one-of-a-kind book covers the complete spectrum of wildlife--more than 800 species of plants, fishes, butterflies, birds, and mammals--that inhabit the Arctic's polar deserts, tundra, taiga, sea ice, and oceans. It can be used anywhere in the entire Holarctic region, including Norway's Svalbard archipelago, Siberia, the Russian Far East, islands of the Bering Sea, Alaska, the Canadian Arctic, and Greenland. Detailed species accounts describe key identification features, size, habitat, range, scientific name, and the unique characteristics that enable these organisms to survive in the extreme conditions of the Far North. A color distribution map accompanies each species account, and alternative names in German, French, Norwegian, Russian, Inuit, and Inupiaq are also provided.",
         "price": 1,
         "quantity": 85970,
-        "evidence": true,
+        "evidence": false,
         "discount": 53,
         "images": [
             "https://d1w7fb2mkkr3kw.cloudfront.net/assets/images/book/lrg/9780/6911/9780691139753.jpg"
@@ -3490,7 +3490,7 @@
         "description": "This new edition of this best-selling resource includes new and updated formative assessment templates, technology connections with easy-to-use digital applications for every assessment, a new section on rubrics and self-assessments, a new focus on scaffolding ELLs, and so much more! These ready-to-go activities-complete with step-by-step lessons, student samples, tiering tips, and reproducible student pages-can be used across the curriculum and provide valuable assessment data for teachers.",
         "price": 16,
         "quantity": 78952,
-        "evidence": true,
+        "evidence": false,
         "discount": 86,
         "images": [
             "https://d1w7fb2mkkr3kw.cloudfront.net/assets/images/book/lrg/9781/3381/9781338135169.jpg"
@@ -3511,7 +3511,7 @@
         "description": "Drury's Management & Cost Accounting is the market-leading European text on management accounting and is a comprehensive authority on all aspects of the subject.",
         "price": 18,
         "quantity": 59711,
-        "evidence": true,
+        "evidence": false,
         "discount": 95,
         "images": [
             "https://d1w7fb2mkkr3kw.cloudfront.net/assets/images/book/lrg/9781/8448/9781844805686.jpg"
@@ -3554,7 +3554,7 @@
         "description": "The most advanced and celebrated mind of the 20th Century, without a doubt, is attributed to Albert Einstein. Instead of his hard science and advanced mathematical theories, which often go far beyond the minds of average people, this book allows us to meet him as a person. This interesting book allows us to explore his beliefs, philosophical ideas, and opinions on many subjects so we can walk away afterwards knowing and understanding one of the world's greatest intellectual giants. Subjects include politics, religion, education, the meaning of life, Jewish issues, the world economy, peace and pacifism. One does not need an advanced degree in math or physics to appreciate the genius of Einstein, shared so clearly by the man himself in this book.",
         "price": 10,
         "quantity": 47302,
-        "evidence": true,
+        "evidence": false,
         "discount": 32,
         "images": [
             "https://d1w7fb2mkkr3kw.cloudfront.net/assets/images/book/lrg/9781/5850/9781585092871.jpg"
@@ -3687,7 +3687,7 @@
         "description": "Best Practices in Gifted Education provides concise, up-to-date, research-based advice to educators, administrators, and parents of gifted and talented youth. The 29 practices included in this volume are the result of an extensive examination of educational research on what works with talented youth. The interest in culturally diverse and low-income learners, the means to identify talents, and the need for curriculum that appropriately challenges high-ability youth constitute just a few of the 29 practices.",
         "price": 7,
         "quantity": 44884,
-        "evidence": true,
+        "evidence": false,
         "discount": 89,
         "images": [
             "https://d1w7fb2mkkr3kw.cloudfront.net/assets/images/book/lrg/9781/5936/9781593632106.jpg"
