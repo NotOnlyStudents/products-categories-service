@@ -6,6 +6,9 @@ class ResponseOk<T> implements Response {
 
   readonly headers: HttpHeaders = {
     'Content-Type': 'application/json',
+    'Access-Control-Allow-Origin': '*',
+    'Access-Control-Allow-Headers': '*',
+    'Access-Control-Allow-Methods': '*',
   };
 
   readonly body: string;

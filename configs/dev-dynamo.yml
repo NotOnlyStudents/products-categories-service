@@ -1,2 +1,1 @@
-region: "localhost"
-endpoint: "http://localhost:8000"
+region: "eu-west-1"
