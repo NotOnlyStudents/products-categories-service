@@ -1,6 +1,6 @@
 {
   "Table": {
-    "TableName": "categories-dev",
+    "TableName": "categories-local",
     "KeySchema": [
       {
         "AttributeName": "id",

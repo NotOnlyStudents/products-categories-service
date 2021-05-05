@@ -4,6 +4,7 @@ frameworkVersion: "2"
 
 provider:
   name: aws
+  stage: ${opt:stage, "dev"}
   runtime: nodejs12.x
   region: eu-west-1
   lambdaHashingVersion: 20201221
@@ -24,9 +25,11 @@ provider:
   environment:
     PRODUCTS_TABLE_NAME: products-${self:provider.stage}
     CATEGORIES_TABLE_NAME: categories-${self:provider.stage}
-    QUEUE_NAME: bought-product-queue-${self:provider.stage}
-    DEAD_QUEUE_NAME: dead-bought-product-queue-${self:provider.stage}
+    QUEUE_NAME: bought-product-queue-${self:provider.stage}.fifo
+    DEAD_QUEUE_NAME: dead-bought-product-queue-${self:provider.stage}.fifo
     DYNAMODB_CONFIG_FILE_PATH: configs/${self:provider.stage}-dynamo.yml
+
+variablesResolutionMode: 20210219
 
 package:
   individually: true
@@ -92,7 +95,17 @@ functions:
       - http:
           path: categories
           method: POST
-          cors: true
+          cors:
+            origin: "*" # <-- Specify allowed origin
+            headers: # <-- Specify allowed headers
+              - Content-Type
+              - X-Amz-Date
+              - Authorization
+              - X-Api-Key
+              - X-Amz-Security-Token
+              - X-Amz-User-Agent
+            allowCredentials: true
+
   editCategory:
     handler: src/lambdas/categories/editCategory.default
     events:
@@ -100,6 +113,7 @@ functions:
           path: categories/{id}
           method: PATCH
           cors: true
+
   deleteCategory:
     handler: src/lambdas/categories/deleteCategory.default
     events:
@@ -114,16 +128,36 @@ resources:
       Type: AWS::SQS::Queue
       Properties:
         QueueName: ${self:provider.environment.QUEUE_NAME}
+        FifoQueue: true
         DelaySeconds: 0
         VisibilityTimeout: 30
         RedrivePolicy:
           deadLetterTargetArn: !GetAtt "DeadBoughtProduct.Arn"
+          maxReceiveCount: 1
 
     DeadBoughtProduct:
       Type: "AWS::SQS::Queue"
       Properties:
         QueueName: ${self:provider.environment.DEAD_QUEUE_NAME}
+        FifoQueue: true
         MessageRetentionPeriod: 604800 #7 days, should be enough time to fix an issue and retry the messages again in case of a critical issue
+
+    # SqsBoughtProductPolicy:
+    #   Type: AWS::SQS::QueuePolicy
+    #   Properties:
+    #     Queues:
+    #       - Ref: BoughtProductQueue
+    #     PolicyDocument:
+    #       Version: "2021-04-19"
+    #       Statement:
+    #         - Effect: Allow
+    #           Principal: "*"
+    #           Action:
+    #             - sqs:SendMessage
+    #           Resource: !GetAtt "BoughtProductQueue.Arn"
+    #           Condition:
+    #             ArnEquals:
+    #               "aws:SourceArn": arn:aws:sns:eu-west-1:501082649462:ProductBought.fifo
 
     SqsBoughtProductPolicy:
       Type: AWS::SQS::QueuePolicy
@@ -131,7 +165,6 @@ resources:
         Queues:
           - Ref: BoughtProductQueue
         PolicyDocument:
-          Version: "2021-04-19"
           Statement:
             - Effect: Allow
               Principal: "*"
@@ -210,12 +243,12 @@ resources:
       Properties:
         AuthorizerResultTtlInSeconds: 300
         IdentitySource: method.request.header.Authorization
-        Name: Cognito
+        Name: ${self:provider.stage}-product-authorizer
         RestApiId:
           Ref: ApiGatewayRestApi
         Type: COGNITO_USER_POOLS
         ProviderARNs:
-          - !GetAtt "CognitoUserPool.Arn"
+          - !ImportValue ${self:provider.stage}-user-pool-arn
 
 custom:
   webpack:
