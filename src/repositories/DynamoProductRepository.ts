@@ -137,9 +137,6 @@ class DynamoProductRepository implements ProductRepository {
       ++total;
 
       if (filters.limit !== undefined) {
-        console.log(total,
-          (products.length < filters.limit)
-          && total > (filters.limit * filters.offset));
         if ((products.length < filters.limit)
           && total > (filters.limit * filters.offset)) {
           products.push(result);

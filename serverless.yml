@@ -21,8 +21,10 @@ provider:
             - dynamodb:PutItem
             - dynamodb:UpdateItem
             - dynamodb:DeleteItem
+            - s3:*
           Resource: "*"
   environment:
+    PRODUCTS_IMAGES_S3: products-images-${self:provider.stage}
     PRODUCTS_TABLE_NAME: products-${self:provider.stage}
     CATEGORIES_TABLE_NAME: categories-${self:provider.stage}
     QUEUE_NAME: bought-product-queue-${self:provider.stage}.fifo
@@ -124,6 +126,16 @@ functions:
 
 resources:
   Resources:
+    ProductsImagesS3:
+      Type: "AWS::S3::Bucket"
+      Properties:
+        BucketName: ${self:provider.environment.PRODUCTS_IMAGES_S3}
+        AccessControl: Public
+        CorsConfiguration:
+          CorsRules:
+            - AllowedHeaders: ["*"]
+              AllowedMethods: ["POST"]
+              AllowedOrigins: ["*"]
     BoughtProductQueue:
       Type: AWS::SQS::Queue
       Properties:
@@ -141,23 +153,6 @@ resources:
         QueueName: ${self:provider.environment.DEAD_QUEUE_NAME}
         FifoQueue: true
         MessageRetentionPeriod: 604800 #7 days, should be enough time to fix an issue and retry the messages again in case of a critical issue
-
-    # SqsBoughtProductPolicy:
-    #   Type: AWS::SQS::QueuePolicy
-    #   Properties:
-    #     Queues:
-    #       - Ref: BoughtProductQueue
-    #     PolicyDocument:
-    #       Version: "2021-04-19"
-    #       Statement:
-    #         - Effect: Allow
-    #           Principal: "*"
-    #           Action:
-    #             - sqs:SendMessage
-    #           Resource: !GetAtt "BoughtProductQueue.Arn"
-    #           Condition:
-    #             ArnEquals:
-    #               "aws:SourceArn": arn:aws:sns:eu-west-1:501082649462:ProductBought.fifo
 
     SqsBoughtProductPolicy:
       Type: AWS::SQS::QueuePolicy

@@ -1,6 +1,6 @@
 {
   "Table": {
-    "TableName": "products-local",
+    "TableName": "products-dev",
     "KeySchema": [
       {
         "AttributeName": "id",

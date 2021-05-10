@@ -1,8 +1,11 @@
 import { APIGatewayProxyEvent } from 'aws-lambda';
+import uploadImageToS3 from 'src/lib/uploadImageToS3';
 import { Product } from 'src/models/Product';
 import { CreateProductResponse } from 'src/models/product-responses';
 import ProductDynamo from 'src/models/ProductDynamo';
 import ProductRepository from 'src/repositories/ProductRepository';
+import S3Repository from 'src/repositories/S3Repository';
+import UploadImageS3Repository from 'src/repositories/UploadImageS3Repository';
 import Response from 'src/responses/Response';
 import ResponseError from 'src/responses/ResponseError';
 import ResponseOk from 'src/responses/ResponseOk';
@@ -29,6 +32,14 @@ async function createProduct(
   );
 
   if (validateProduct(productToSave)) {
+    const s3Bucket: S3Repository = new UploadImageS3Repository();
+
+    const images = await Promise.all(productToSave.images.map(
+      async (image: string) => uploadImageToS3(s3Bucket, image),
+    ));
+
+    productToSave.images = images;
+
     const productSaved: Product = await repository.save(productToSave);
 
     response = new ResponseOk<CreateProductResponse>({
@@ -36,7 +47,7 @@ async function createProduct(
     });
   } else {
     response = new ResponseError({
-      message: 'some field does not satisfy its minimum requirement',
+      message: 'Some field does not satisfy its minimum requirement',
     });
   }
 
