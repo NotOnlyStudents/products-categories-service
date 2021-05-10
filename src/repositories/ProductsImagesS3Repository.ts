@@ -1,14 +1,11 @@
 import AWS, { S3 } from 'aws-sdk';
-import { parseDocument } from 'yaml';
-import { readFileSync as readFile } from 'fs';
-import DynamoDB, { ClientConfiguration } from 'aws-sdk/clients/dynamodb';
 import S3Repository from './S3Repository';
 
 function createImageUrl(key: string, region: string) {
   return `https://${process.env.PRODUCTS_IMAGES_S3}.s3-${region}.amazonaws.com/${key}`;
 }
 
-class UploadImageS3Repository implements S3Repository {
+class ProductsImagesS3Repository implements S3Repository {
   private s3: S3;
 
   private bucketName: string;
@@ -32,6 +29,13 @@ class UploadImageS3Repository implements S3Repository {
 
     return createImageUrl(key, this.region);
   }
+
+  async deleteImage(key: string): Promise<void> {
+    await this.s3.deleteObject({
+      Bucket: this.bucketName,
+      Key: key,
+    }).promise();
+  }
 }
 
-export default UploadImageS3Repository;
+export default ProductsImagesS3Repository;
