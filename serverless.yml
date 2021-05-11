@@ -58,6 +58,10 @@ functions:
           path: products
           method: POST
           cors: true
+          authorizer:
+            type: COGNITO_USER_POOLS
+            authorizerId:
+              Ref: ApiGatewayAuthorizer
 
   getProductById:
     handler: src/lambdas/products/getProductById.default
@@ -74,6 +78,10 @@ functions:
           path: products/{id}
           method: DELETE
           cors: true
+          authorizer:
+            type: COGNITO_USER_POOLS
+            authorizerId:
+              Ref: ApiGatewayAuthorizer
 
   editProduct:
     handler: src/lambdas/products/editProduct.default
@@ -82,6 +90,10 @@ functions:
           path: products/{id}
           method: PATCH
           cors: true
+          authorizer:
+            type: COGNITO_USER_POOLS
+            authorizerId:
+              Ref: ApiGatewayAuthorizer
 
   getAllCategories:
     handler: src/lambdas/categories/getAllCategories.default
@@ -98,6 +110,10 @@ functions:
           path: categories
           method: POST
           cors: true
+          authorizer:
+            type: COGNITO_USER_POOLS
+            authorizerId:
+              Ref: ApiGatewayAuthorizer
 
   editCategory:
     handler: src/lambdas/categories/editCategory.default
@@ -106,6 +122,10 @@ functions:
           path: categories/{id}
           method: PATCH
           cors: true
+          authorizer:
+            type: COGNITO_USER_POOLS
+            authorizerId:
+              Ref: ApiGatewayAuthorizer
 
   deleteCategory:
     handler: src/lambdas/categories/deleteCategory.default
@@ -114,6 +134,10 @@ functions:
           path: categories/{id}
           method: DELETE
           cors: true
+          authorizer:
+            type: COGNITO_USER_POOLS
+            authorizerId:
+              Ref: ApiGatewayAuthorizer
 
 resources:
   Resources:
