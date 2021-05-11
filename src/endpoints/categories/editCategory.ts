@@ -1,4 +1,5 @@
 import { APIGatewayProxyEvent } from 'aws-lambda';
+import { isSeller } from 'src/lib/auth';
 import { Category } from 'src/models/Category';
 import { CreateCategoryResponse, EditCategoryResponse, GetAllCategoriesResponse } from 'src/models/category-responses';
 import CategoryDynamo from 'src/models/CategoryDynamo';
@@ -13,23 +14,29 @@ async function editCategory(
 ): Promise<Response> {
   let response;
 
-  const category: Category = JSON.parse(event.body || '{}');
+  if (isSeller(event)) {
+    const category: Category = JSON.parse(event.body || '{}');
 
-  const categoryEdit = new CategoryDynamo(
-    event.pathParameters.id,
-    category.name,
-  );
+    const categoryEdit = new CategoryDynamo(
+      event.pathParameters.id,
+      category.name,
+    );
 
-  if (validateCategory(categoryEdit)) {
-    const categoryEdited = await repository.edit(categoryEdit);
+    if (validateCategory(categoryEdit)) {
+      const categoryEdited = await repository.edit(categoryEdit);
 
-    response = new ResponseOk<EditCategoryResponse>({
-      data: categoryEdited,
-    });
+      response = new ResponseOk<EditCategoryResponse>({
+        data: categoryEdited,
+      });
+    } else {
+      response = new ResponseError({
+        message: 'some field does not satisfy its minimum requirement',
+      });
+    }
   } else {
     response = new ResponseError({
-      message: 'some field does not satisfy its minimum requirement',
-    });
+      message: 'User not authorized',
+    }, 401);
   }
 
   return response;

@@ -6,8 +6,6 @@ import {
   contains,
   greaterThan,
   equals,
-  AttributePath,
-  FunctionExpression,
 } from '@aws/dynamodb-expressions';
 import {
   Product, ProductFilter, ProductPaginator, SortType,

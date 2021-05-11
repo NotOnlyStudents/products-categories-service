@@ -20,8 +20,6 @@ async function getProductById(
 
     response = new ResponseOk<GetOneProductResponse>(createToken(product));
   } catch (error) {
-    console.log(error);
-
     response = new ResponseError({
       message: 'Cannot find the product with that specific ID',
     }, 404);

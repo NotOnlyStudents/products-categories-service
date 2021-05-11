@@ -1,6 +1,7 @@
 import { APIGatewayProxyEvent } from 'aws-lambda';
+import { isSeller } from 'src/lib/auth';
 import { Category } from 'src/models/Category';
-import { CreateCategoryResponse, GetAllCategoriesResponse } from 'src/models/category-responses';
+import { CreateCategoryResponse } from 'src/models/category-responses';
 import CategoryDynamo from 'src/models/CategoryDynamo';
 import CategoryRepository from 'src/repositories/CategoryRepository';
 import Response from 'src/responses/Response';
@@ -13,23 +14,29 @@ async function createCategory(
 ): Promise<Response> {
   let response;
 
-  const category: Category = JSON.parse(event.body || '{}');
+  if (isSeller(event)) {
+    const category: Category = JSON.parse(event.body || '{}');
 
-  const categoryToSave = new CategoryDynamo(
-    '',
-    category.name,
-  );
+    const categoryToSave = new CategoryDynamo(
+      '',
+      category.name,
+    );
 
-  if (validateCategory(categoryToSave)) {
-    const categorySaved = await repository.save(categoryToSave);
+    if (validateCategory(categoryToSave)) {
+      const categorySaved = await repository.save(categoryToSave);
 
-    response = new ResponseOk<CreateCategoryResponse>({
-      data: categorySaved,
-    });
+      response = new ResponseOk<CreateCategoryResponse>({
+        data: categorySaved,
+      });
+    } else {
+      response = new ResponseError({
+        message: 'some field does not satisfy its minimum requirement',
+      });
+    }
   } else {
     response = new ResponseError({
-      message: 'some field does not satisfy its minimum requirement',
-    });
+      message: 'User not authorized',
+    }, 401);
   }
 
   return response;
