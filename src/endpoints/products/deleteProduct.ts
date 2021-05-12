@@ -1,8 +1,11 @@
 import { APIGatewayProxyEvent } from 'aws-lambda';
 import dispatchSNSProductDeleted from 'src/lambdas/products/sns/dispatchSNSProductDeleted';
 import { isSeller } from 'src/lib/auth';
+import { deleteImageFromS3 } from 'src/lib/S3API';
 import { DeleteProductResponse } from 'src/models/product-responses';
 import ProductRepository from 'src/repositories/ProductRepository';
+import ProductsImagesS3Repository from 'src/repositories/ProductsImagesS3Repository';
+import S3Repository from 'src/repositories/S3Repository';
 import Response from 'src/responses/Response';
 import ResponseError from 'src/responses/ResponseError';
 import ResponseOk from 'src/responses/ResponseOk';
@@ -16,6 +19,12 @@ async function deleteProduct(
   if (isSeller(event)) {
     try {
       const { id } = event.pathParameters;
+
+      const product = await repository.getOne(id);
+
+      const s3: S3Repository = new ProductsImagesS3Repository();
+
+      await Promise.all(product.images.map(async (image) => deleteImageFromS3(s3, image)));
 
       await repository.delete(id);
 

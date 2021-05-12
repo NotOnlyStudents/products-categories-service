@@ -6,7 +6,7 @@ provider:
   name: aws
   stage: ${opt:stage, "dev"}
   runtime: nodejs12.x
-  region: eu-west-2
+  region: eu-west-1
   lambdaHashingVersion: 20201221
   apiGateway:
     shouldStartNameWithService: true
@@ -24,7 +24,7 @@ provider:
             - s3:*
           Resource: "*"
   environment:
-    PRODUCTS_IMAGES_S3: products-images-${self:provider.stage}
+    PRODUCTS_IMAGES_S3: products-images-1${self:provider.stage}
     PRODUCTS_TABLE_NAME: products-${self:provider.stage}
     CATEGORIES_TABLE_NAME: categories-${self:provider.stage}
     QUEUE_NAME: bought-product-queue-${self:provider.stage}.fifo
@@ -154,12 +154,13 @@ resources:
       Type: "AWS::S3::Bucket"
       Properties:
         BucketName: ${self:provider.environment.PRODUCTS_IMAGES_S3}
-        AccessControl: Public
+        AccessControl: PublicReadWrite
         CorsConfiguration:
           CorsRules:
             - AllowedHeaders: ["*"]
               AllowedMethods: ["POST"]
               AllowedOrigins: ["*"]
+
     BoughtProductQueue:
       Type: AWS::SQS::Queue
       Properties:

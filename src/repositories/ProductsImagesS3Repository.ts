@@ -1,4 +1,7 @@
 import AWS, { S3 } from 'aws-sdk';
+import { parseDocument } from 'yaml';
+import { readFileSync as readFile } from 'fs';
+import { ClientConfiguration } from 'aws-sdk/clients/dynamodb';
 import S3Repository from './S3Repository';
 
 function createImageUrl(key: string, region: string) {
@@ -13,9 +16,12 @@ class ProductsImagesS3Repository implements S3Repository {
   private region: string;
 
   constructor() {
+    const dynamoConfig: ClientConfiguration = parseDocument(readFile(process.env.DYNAMODB_CONFIG_FILE_PATH, 'utf-8')).toJSON();
+
     this.s3 = new AWS.S3();
     this.bucketName = process.env.PRODUCTS_IMAGES_S3;
-    this.region = 'eu-west-2';
+
+    this.region = dynamoConfig.region;
   }
 
   async uploadImage(buffer: Buffer, key: string): Promise<string> {
