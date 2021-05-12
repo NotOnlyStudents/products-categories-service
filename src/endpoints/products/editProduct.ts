@@ -1,4 +1,6 @@
 import { APIGatewayProxyEvent } from 'aws-lambda';
+import dispatchSNSProductEdited from 'src/lambdas/products/sns/dispatchSNSProductEdited';
+import { isSeller } from 'src/lib/auth';
 import { deleteImageFromS3, isBase64Data, uploadImageToS3 } from 'src/lib/S3API';
 import { Product } from 'src/models/Product';
 import { EditProductResponse } from 'src/models/product-responses';
@@ -16,67 +18,75 @@ async function editProduct(
 ): Promise<Response> {
   let response: Response;
 
-  const product: Product = JSON.parse(event.body || '{}');
-  const { id } = event.pathParameters;
+  if (isSeller(event)) {
+    const product: Product = JSON.parse(event.body || '{}');
+    const { id } = event.pathParameters;
 
-  const productToEdit: ProductDynamo = new ProductDynamo(
-    id,
-    product.name,
-    product.description,
-    product.discount,
-    product.evidence,
-    product.images,
-    product.price,
-    product.quantity,
-    product.categories,
-  );
+    const productToEdit: ProductDynamo = new ProductDynamo(
+      id,
+      product.name,
+      product.description,
+      product.discount,
+      product.evidence,
+      product.images,
+      product.price,
+      product.quantity,
+      product.categories,
+    );
 
-  if (validateProduct(productToEdit)) {
-    try {
-      const actualProduct: Product = await repository.getOne(id);
+    if (validateProduct(productToEdit)) {
+      try {
+        const actualProduct: Product = await repository.getOne(id);
 
-      const s3: S3Repository = new ProductsImagesS3Repository();
+        const s3: S3Repository = new ProductsImagesS3Repository();
 
-      actualProduct.images
-        .filter(
-          (image) => !productToEdit.images.includes(image),
-        )
-        .map((image) => deleteImageFromS3(s3, image));
+        actualProduct.images
+          .filter(
+            (image) => !productToEdit.images.includes(image),
+          )
+          .map((image) => deleteImageFromS3(s3, image));
 
-      const imagesUploaded = await Promise.all(productToEdit.images
-        .map((image, index) => ({ image, index }))
-        .filter(
-          (data) => isBase64Data(data.image),
-        )
-        .map(
-          async (data) => (
-            {
-              index: data.index,
-              image: await uploadImageToS3(s3, data.image),
-            }
-          ),
-        ));
+        const imagesUploaded = await Promise.all(productToEdit.images
+          .map((image, index) => ({ image, index }))
+          .filter(
+            (data) => isBase64Data(data.image),
+          )
+          .map(
+            async (data) => (
+              {
+                index: data.index,
+                image: await uploadImageToS3(s3, data.image),
+              }
+            ),
+          ));
 
-      imagesUploaded.forEach(
-        (data) => {
-          productToEdit.images[data.index] = data.image;
-        },
-      );
+        imagesUploaded.forEach(
+          (data) => {
+            productToEdit.images[data.index] = data.image;
+          },
+        );
 
-      const productEdited: Product = await repository.edit(productToEdit);
+        const productEdited: Product = await repository.edit(productToEdit);
 
-      response = new ResponseOk<EditProductResponse>({
-        data: productEdited,
-      });
-    } catch (error) {
+        dispatchSNSProductEdited(productToEdit);
+
+        response = new ResponseOk<EditProductResponse>({
+          data: productEdited,
+        });
+      } catch (error) {
+        response = new ResponseError({
+          message: 'Cannot find the product with that ID',
+        }, 404);
+      }
+    } else {
       response = new ResponseError({
-        message: 'Cannot find the product with that ID',
-      }, 404);
+        message: 'Some field does not satisfy its minimum requirement',
+      });
     }
   } else {
     response = new ResponseError({
-      message: 'some field does not satisfy its minimum requirement',
-    });
+      message: 'User not authorized',
+    }, 401);
   }
 
   return response;

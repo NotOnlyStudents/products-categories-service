@@ -1,4 +1,6 @@
 import { APIGatewayProxyEvent } from 'aws-lambda';
+import dispatchSNSProductDeleted from 'src/lambdas/products/sns/dispatchSNSProductDeleted';
+import { isSeller } from 'src/lib/auth';
 import { DeleteProductResponse } from 'src/models/product-responses';
 import ProductRepository from 'src/repositories/ProductRepository';
 import Response from 'src/responses/Response';
@@ -9,18 +11,26 @@ async function deleteProduct(
   repository: ProductRepository,
   event: APIGatewayProxyEvent,
 ): Promise<Response> {
-  let response;
+  let response: Response;
 
-  try {
-    const { id } = event.pathParameters;
+  if (isSeller(event)) {
+    try {
+      const { id } = event.pathParameters;
 
-    await repository.delete(id);
+      await repository.delete(id);
 
-    response = new ResponseOk<DeleteProductResponse>();
-  } catch (error) {
+      dispatchSNSProductDeleted(id);
+
+      response = new ResponseOk<DeleteProductResponse>();
+    } catch (error) {
+      response = new ResponseError({
+        message: 'Cannot find the product with that specific ID',
+      }, 404);
+    }
+  } else {
     response = new ResponseError({
-      message: 'Cannot find the product with that specific ID',
-    }, 404);
+      message: 'User not authorized',
+    }, 401);
   }
 
   return response;

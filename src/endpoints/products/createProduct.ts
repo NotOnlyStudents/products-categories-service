@@ -10,6 +10,7 @@ import Response from 'src/responses/Response';
 import ResponseError from 'src/responses/ResponseError';
 import ResponseOk from 'src/responses/ResponseOk';
 import { validateProduct } from 'src/validation/validate-product';
+import { isSeller } from 'src/lib/auth';
 
 async function createProduct(
   repository: ProductRepository,
@@ -17,38 +18,44 @@ async function createProduct(
 ): Promise<Response> {
   let response: Response;
 
-  const product: Product = JSON.parse(event.body || '{}');
+  if (isSeller(event)) {
+    const product: Product = JSON.parse(event.body || '{}');
 
-  const productToSave: ProductDynamo = new ProductDynamo(
-    product.id,
-    product.name,
-    product.description,
-    product.discount,
-    product.evidence,
-    product.images,
-    product.price,
-    product.quantity,
-    product.categories,
-  );
+    const productToSave: ProductDynamo = new ProductDynamo(
+      product.id,
+      product.name,
+      product.description,
+      product.discount,
+      product.evidence,
+      product.images,
+      product.price,
+      product.quantity,
+      product.categories,
+    );
 
-  if (validateProduct(productToSave)) {
-    const s3Bucket: S3Repository = new ProductsImagesS3Repository();
+    if (validateProduct(productToSave)) {
+      const s3Bucket: S3Repository = new ProductsImagesS3Repository();
 
-    const images = await Promise.all(productToSave.images.map(
-      async (image: string) => uploadImageToS3(s3Bucket, image),
-    ));
+      const images = await Promise.all(productToSave.images.map(
+        async (image: string) => uploadImageToS3(s3Bucket, image),
+      ));
 
-    productToSave.images = images;
+      productToSave.images = images;
 
-    const productSaved: Product = await repository.save(productToSave);
+      const productSaved: Product = await repository.save(productToSave);
 
-    response = new ResponseOk<CreateProductResponse>({
-      data: productSaved,
-    });
+      response = new ResponseOk<CreateProductResponse>({
+        data: productSaved,
+      });
+    } else {
+      response = new ResponseError({
+        message: 'Some field does not satisfy its minimum requirement',
+      });
+    }
   } else {
     response = new ResponseError({
-      message: 'Some field does not satisfy its minimum requirement',
-    });
+      message: 'User not authorized',
+    }, 401);
   }
 
   return response;
