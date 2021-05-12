@@ -14,7 +14,7 @@ async function deleteProduct(
   try {
     const { id } = event.pathParameters;
 
-    repository.delete(id);
+    await repository.delete(id);
 
     response = new ResponseOk<DeleteProductResponse>();
   } catch (error) {
