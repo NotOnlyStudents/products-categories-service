@@ -31,6 +31,9 @@ provider:
     DEAD_QUEUE_NAME: dead-bought-product-queue-${self:provider.stage}.fifo
     DYNAMODB_CONFIG_FILE_PATH: configs/${self:provider.stage}-dynamo.yml
 
+    PRODUCT_EDITED_ARN: arn:aws:sns:eu-west-1:501082649462:ProductEdited.fifo
+    PRODUCT_DELETED_ARN: arn:aws:sns:eu-west-1:501082649462:ProductDeleted.fifo
+
 variablesResolutionMode: 20210219
 
 package:
@@ -94,6 +97,12 @@ functions:
             type: COGNITO_USER_POOLS
             authorizerId:
               Ref: ApiGatewayAuthorizer
+
+  updateQuantity:
+    handler: src/lambdas/products/updateQuantity.default
+    events:
+      - sqs:
+          arn: !GetAtt "BoughtProductQueue.Arn"
 
   getAllCategories:
     handler: src/lambdas/categories/getAllCategories.default
@@ -191,6 +200,7 @@ resources:
         Endpoint: !GetAtt "BoughtProductQueue.Arn"
         Protocol: "sqs"
         TopicArn: arn:aws:sns:eu-west-1:501082649462:ProductBought.fifo
+
     CategoriesTable:
       Type: AWS::DynamoDB::Table
       Properties:

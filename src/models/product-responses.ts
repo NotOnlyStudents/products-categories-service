@@ -27,3 +27,8 @@ export interface EditProductResponse {
 export interface DeleteProductResponse {
 
 }
+
+export interface SNSQuantityEditedPayload {
+  id: string,
+  quantity: number
+}

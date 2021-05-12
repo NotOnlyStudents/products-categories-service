@@ -1,4 +1,5 @@
 import { APIGatewayProxyEvent } from 'aws-lambda';
+import dispatchSNSProductEdited from 'src/lambdas/products/sns/dispatchSNSProductEdited';
 import { isSeller } from 'src/lib/auth';
 import { deleteImageFromS3, isBase64Data, uploadImageToS3 } from 'src/lib/S3API';
 import { Product } from 'src/models/Product';
@@ -66,6 +67,8 @@ async function editProduct(
         );
 
         const productEdited: Product = await repository.edit(productToEdit);
+
+        dispatchSNSProductEdited(productToEdit);
 
         response = new ResponseOk<EditProductResponse>({
           data: productEdited,
