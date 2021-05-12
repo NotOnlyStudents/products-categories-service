@@ -1,4 +1,5 @@
 import { APIGatewayProxyEvent } from 'aws-lambda';
+import dispatchSNSProductDeleted from 'src/lambdas/products/sns/dispatchSNSProductDeleted';
 import { isSeller } from 'src/lib/auth';
 import { DeleteProductResponse } from 'src/models/product-responses';
 import ProductRepository from 'src/repositories/ProductRepository';
@@ -17,6 +18,8 @@ async function deleteProduct(
       const { id } = event.pathParameters;
 
       repository.delete(id);
+
+      dispatchSNSProductDeleted(id);
 
       response = new ResponseOk<DeleteProductResponse>();
     } catch (error) {
