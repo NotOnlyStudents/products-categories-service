@@ -13,6 +13,7 @@ const handler: SQSHandler = async (
       new DynamoProductRepository(),
       event,
     );
+    console.log('Success');
   } catch (error) {
     console.error(error);
   }

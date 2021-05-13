@@ -11,16 +11,25 @@ async function updateQuantity(
   const record: SQSRecord = event.Records[0];
   const msg: SNSMessage = JSON.parse(record.body);
 
+  console.log('Records: ', event.Records);
+  console.log('Msg: ', msg);
+
   const orders: SNSQuantityEditedPayload[] = JSON.parse(msg.Message);
 
+  console.log('Orders: ', orders);
+
   orders.forEach(async (order: SNSQuantityEditedPayload) => {
-    if (validateSNSQuantity(order)) {
-      const product: Product = await repository.getOne(order.id);
+    console.log(JSON.stringify(order, null, 4));
 
-      product.quantity -= order.quantity;
+    const product: Product = await repository.getOne(order.id);
 
-      await repository.edit(product);
-    }
+    console.log('Product: ', product);
+
+    product.quantity -= order.quantity;
+
+    console.log('New quantity: ', product.quantity);
+
+    await repository.edit(product);
   });
 }
 

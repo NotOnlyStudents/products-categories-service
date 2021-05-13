@@ -34,6 +34,8 @@ async function editProduct(
       product.categories,
     );
 
+    console.log(productToEdit);
+
     if (validateProduct(productToEdit)) {
       try {
         const actualProduct: Product = await repository.getOne(id);
@@ -68,7 +70,9 @@ async function editProduct(
 
         const productEdited: Product = await repository.edit(productToEdit);
 
-        dispatchSNSProductEdited(productToEdit);
+        console.log(productEdited);
+
+        dispatchSNSProductEdited(productEdited);
 
         response = new ResponseOk<EditProductResponse>({
           data: productEdited,
