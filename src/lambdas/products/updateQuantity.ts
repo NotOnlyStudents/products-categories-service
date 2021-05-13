@@ -4,7 +4,6 @@ import {
 
 import updateQuantity from 'src/endpoints/products/updateQuantity';
 import DynamoProductRepository from 'src/repositories/DynamoProductRepository';
-import Response from 'src/responses/Response';
 
 const handler: SQSHandler = async (
   event: SQSEvent,

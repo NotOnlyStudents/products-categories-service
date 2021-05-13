@@ -22,6 +22,7 @@ provider:
             - dynamodb:UpdateItem
             - dynamodb:DeleteItem
             - s3:*
+            - sns:Publish
           Resource: "*"
   environment:
     PRODUCTS_IMAGES_S3: products-images-1${self:provider.stage}
