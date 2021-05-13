@@ -153,7 +153,9 @@ class DynamoProductRepository implements ProductRepository {
   getOne = async (id: string): Promise<Product> => {
     const productToSearch: Product = new ProductDynamo(id);
 
-    return this.mapper.get(productToSearch);
+    const product = await this.mapper.get(productToSearch);
+
+    return product;
   };
 
   save = async (productToSave: Product): Promise<Product> => {
