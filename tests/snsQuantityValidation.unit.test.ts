@@ -5,7 +5,7 @@ describe('Validate quantity to update', () => {
   test('Valid quantity payload', () => {
     const payload: SNSQuantityEditedPayload = {
       id: '1',
-      quantity: 12345
+      quantity: 12345,
     };
 
     expect(validateSNSQuantity(payload)).toBeTruthy();
@@ -14,7 +14,7 @@ describe('Validate quantity to update', () => {
   test('Invalid id is empty', () => {
     const payload: SNSQuantityEditedPayload = {
       id: '',
-      quantity: 12345
+      quantity: 12345,
     };
 
     expect(validateSNSQuantity(payload)).toBeFalsy();
