@@ -1,5 +1,5 @@
 export default {
-  preset: '@shelf/jest-dynamodb',
+  // preset: '@shelf/jest-dynamodb',
   roots: ['<rootDir>'],
   transform: {
     '^.+\\.ts?$': 'ts-jest'
